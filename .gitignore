@@ -1,0 +1,71 @@
+# Build results
+bin/
+obj/
+out/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider / JetBrains
+.idea/
+*.ipr
+*.iws
+*.iml
+
+# ASP.NET / .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+*.nuspec
+
+# Publish outputs
+/wwwroot/dist/
+/wwwroot/node_modules/
+
+# Logs
+logs/
+*.log
+
+# Environment / sensitive
+appsettings.Development.json
+appsettings.Local.json
+appsettings.*.local.json
+secrets.json
+
+# User-specific
+*.user
+*.rsuser
+
+# OS junk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Node (si usas frontend dentro del proyecto)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# EF Core
+Migrations/obj/
+
+# Other
+*.tmp
+*.temp
+*.bak
