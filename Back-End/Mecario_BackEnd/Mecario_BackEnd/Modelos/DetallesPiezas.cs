@@ -13,5 +13,6 @@
 
         //Subtotal = cantidad × precioUnitario
         public double subtotal { get; set; }
+
     }
 }

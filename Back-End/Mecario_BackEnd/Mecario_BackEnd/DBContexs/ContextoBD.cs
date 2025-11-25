@@ -174,6 +174,8 @@ namespace Mecario_BackEnd.DBContexs
                 entity.Property(e => e.descripcionPieza).IsRequired();                           //Descripcion de la pieza
                 entity.Property(e => e.precioUnidad).IsRequired();                               //Precio de cada unidad de la pieza
                 entity.Property(e => e.stockActual).IsRequired();                                //Cantidad en stock
+                entity.Property(e => e.codigoPieza).IsRequired().HasMaxLength(6);                //Codigo del producto de maximo 6 caracteres
+                entity.HasIndex(e => e.codigoPieza).IsUnique();                                  //El codigo debe ser unico
                 //FK A DETALLES PIEZA
                 entity.HasMany(p => p.detallesPieza)
                       .WithOne(dp => dp.piezas)

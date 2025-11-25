@@ -1,0 +1,65 @@
+﻿using Mecario_BackEnd.DBContexs;
+using Mecario_BackEnd.Modelos.DTOs;
+using Mecario_BackEnd.Modelos;
+using Microsoft.EntityFrameworkCore;
+
+namespace Mecario_BackEnd.Servicios
+{
+    public class PiezasServicio
+    {
+        private readonly ContextoBD _context;
+
+        public PiezasServicio(ContextoBD context)
+        {
+            _context = context;
+        }
+
+        //Metodo para que el admin agregue una nueva pieza al "inventario"
+        public async Task<Piezas> AgregarPiezaNueva(AgregarPiezaNuevaDTO dto)
+        {
+            //VALIDACIONES
+
+            if (dto == null)
+                throw new ArgumentException("Los datos enviados están vacíos.");
+
+            if (string.IsNullOrWhiteSpace(dto.nombrePieza))
+                throw new ArgumentException("El nombre de la pieza es obligatorio.");
+
+            if (string.IsNullOrWhiteSpace(dto.descripcionPieza))
+                throw new ArgumentException("La descripción es obligatoria.");
+
+            if (dto.precioUnidad <= 0)
+                throw new ArgumentException("El precio debe ser mayor a 0.");
+
+            if (dto.stockActual < 0)
+                throw new ArgumentException("El stock no puede ser negativo.");
+
+            // Validación enum CategoriaPieza
+            if (!Enum.IsDefined(typeof(Piezas.CategoriaPieza), dto.categoriaPieza))
+                throw new ArgumentException("La categoría enviada no existe en la lista de categorías.");
+
+            //Verificar que el codigo sea unico y no exista
+            bool codigoExiste = await _context.Piezas.AnyAsync(p => p.codigoPieza == dto.codigoPieza);
+
+            if (codigoExiste)
+                throw new ArgumentException("El código ingresado ya existe. Debe ser único.");
+
+            //  CREACIÓN DEL OBJETO MODELO
+            var nuevaPieza = new Piezas
+            {
+                nombrePieza = dto.nombrePieza,
+                categoriaPieza = (Piezas.CategoriaPieza)dto.categoriaPieza, //Agarra y transforma el Enum a la categoria correspontiende
+                descripcionPieza = dto.descripcionPieza,
+                codigoPieza = dto.codigoPieza,
+                precioUnidad = dto.precioUnidad,
+                stockActual = dto.stockActual
+            };
+
+            //  GUARDAR EN BASE DE DATOS
+            _context.Piezas.Add(nuevaPieza);
+            await _context.SaveChangesAsync();
+
+            return nuevaPieza;
+        }
+    }
+}
