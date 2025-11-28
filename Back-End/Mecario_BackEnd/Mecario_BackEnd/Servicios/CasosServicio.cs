@@ -30,7 +30,7 @@ namespace Mecario_BackEnd.Servicios
             var casos = await _context.Casos.Where(c => c.idUsuario == idMecanico).ToListAsync();
 
             if (casos.Count == 0)
-                throw new ArgumentException("El mecánico no tiene casos asignados.");
+                throw new ArgumentException("El mecánico no tiene casos asignados.");  
 
             // Convertir a DTO
             var lista = casos.Select(c => new CasosDeMecanicoDTO

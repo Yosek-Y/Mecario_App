@@ -9,6 +9,9 @@ builder.Services.AddDbContext<ContextoBD>(options =>
 builder.Services.AddScoped<PiezasServicio>();
 builder.Services.AddScoped<UsuariosServicio>();
 builder.Services.AddScoped<CasosServicio>();
+builder.Services.AddScoped<ClientesServicio>();
+builder.Services.AddScoped<VehiculosServicio>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
