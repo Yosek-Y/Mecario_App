@@ -1,11 +1,228 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Mecario - Home</title>
+    <!-- 
+        ICONOS (FONT AWESOME)
+        - Se importa la librería de iconos para usar el ícono de búsqueda
+          y las redes sociales en el header.
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 
+        TIPOGRAFÍAS (GOOGLE FONTS)
+        - Se cargan dos familias de fuentes:
+            * Montserrat: Usada para los titulos
+            * Roboto: Usada en el contenido del sitio
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- Archivo CSS-->
+    <link rel="stylesheet" href="../CSS/EstilosHome.css">
 </head>
+
 <body>
-    
+    <!-- HEADER: Contiene Logo, Navegación y Banner superior -->
+    <header>
+        <!-- 
+        Parte Izquierda: Logo y Nombre del proyecto
+        - Muestra la imagen del logo y el nombre del proyecto Mecario
+        -->
+        <div class="logo-container">
+            <img src="../../ASSETS/IMAGENES/Logo_Blanco_Mecario.png" alt="Logo Mecario" class="logo-img">
+            <span class="brand-name">MECARIO</span>
+        </div>
+        <!-- 
+        Parte central: Barra de navegación / nav
+        - Contiene los enlaces del menú principal.
+        - Cada <a> apunta a secciones internas de la página mediante IDs.
+        - La sección "Nosotros" lleva a una página externa.
+        -->
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#noticias">Noticias</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <!-- 
+        Parte Derecha: Íconos y Botón de Login
+        - Incluye el ícono de búsqueda con enlace directo a Google.com
+        - Contiene íconos de redes sociales
+        - Incluye el botón "Login" que abre el display de autenticación mediante JS
+        -->
+        <div class="top-banner-icons">
+            <!-- Ícono de Búsqueda -->
+            <a href="https://www.google.com" target="_blank" class="icon-link" title="Buscar en Google">
+                <i class="fas fa-search"></i></a>
+            <!-- Iconos de Redes Sociales -->
+            <a href="#" class="icon-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="icon-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="icon-link"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Botón de Login -->
+            <button class="btn-login" onclick="abrirLogin()">Login</button>
+        </div>
+    </header>
+    <!-- Secciones principales del sitio -->
+
+    <!-- --------------------------Seccion Inicio-------------------------- -->
+    <section id="inicio" class="inicio">
+        <div class="inicio-content">
+            <h1>Soluciones Mecánicas Integrales</h1>
+            <p>Expertos en ingeniería y mantenimiento automotriz al alcance de tu mano.</p>
+        </div>
+    </section>
+
+    <!-- --------------------------Seccion Servicios-------------------------- -->
+    <section id="servicios" class="servicios">
+        <h2>Ofrecemos servicios de</h2>
+        <div class="grid-servicios">
+            <!-- Card 1 -->
+            <article class="card">
+                <i class="fas fa-wrench"></i>
+                <h3>Mecánica General</h3>
+                <p>Reparación y diagnóstico completo de motores y sistemas de transmisión.</p>
+            </article>
+            <!-- Card 2 -->
+            <article class="card">
+                <i class="fas fa-oil-can"></i>
+                <h3>Mantenimiento</h3>
+                <p>Cambios de aceite, filtros y revisión preventiva para tu seguridad.</p>
+            </article>
+            <!-- Card 3 -->
+            <article class="card">
+                <i class="fas fa-cogs"></i>
+                <h3>Repuestos</h3>
+                <p>Venta e instalación de repuestos originales y certificados.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- --------------------------Seccion Noticias-------------------------- -->
+    <section id="noticias" class="noticias">
+        <h2>Noticias Relevantes</h2>
+        <div class="contenedor-noticias">
+            <!-- Artículo 1 -->
+            <article class="noticia-card">
+                <img src="https://www.diariomotor.com/imagenes/2025/11/audi-v6-tdi-mhev-2026-04-6928a971210af.jpg?class=OG"
+                    alt="Nuevo motor V6 diésel microhíbrido de Audi">
+                <h3>Con 6 cilindros y quemando diésel HVO, lo último de Audi es el motor ideal para olvidarte del coche
+                    eléctrico</h3>
+                <p>Apostar por la total electrificación es una estrategia que se está demostrando errónea, cada vez más
+                    marcas se están dando cuenta, pero en Audi han decidido ir todavía más allá. El motor diésel aún
+                    tiene mucho que decir en Europa, en Audi lo saben y por eso han decidido desarrollar un nuevo motor
+                    V6 que, aún quemando diésel, tendrá etiqueta ECO y no conocerá rival en emisiones.</p>
+                <a href="https://www.diariomotor.com/noticia/nuevo-motor-v6-diesel-microhibrido-audi/"
+                    target="_blank">Leer artículo</a>
+            </article>
+
+            <!-- Video -->
+            <article class="noticia-card video-card">
+                <div class="video-wrapper">
+                    <iframe src="https://www.youtube.com/embed/MmuZjQdjRO4?si=ExX0upMEVU8NCSN9"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <h3>Autos eléctricos ¿ventajas de mantenimiento?</h3>
+                <p>Los autos eléctricos tienen muchas ventajas en cuanto a mantenimiento, pero ¿realmente son tan bajos
+                    los costos? En este video te contamos todo lo que debes saber sobre el mantenimiento de los autos
+                    eléctricos.</p>
+                <a href="https://www.youtube.com/watch?v=MmuZjQdjRO4" 
+                    target="_blank">Ver video</a>
+            </article>
+
+            <!-- Artículo 2 -->
+            <article class="noticia-card">
+                <img src="https://www.diariomotor.com/imagenes/2025/10/Porsche-911-turbo-motor-01-68f8b90d774de.jpg?class=L"
+                    alt="Motor W de 18 cilindros de Porsche">
+                <h3>El monstruo de los 18 cilindros en W, el nuevo motor en el que trabaja Porsche</h3>
+                <p>En Porsche traman algo desde hace tiempo y nada tiene que ver con motores eléctricos o baterías. La
+                    firma alemana es una las mayores defensoras del uso de combustibles sintéticos, buscando así una
+                    fórmula mágica que permita seguir disfrutando de los motores gasolina, y tanto es así que ahora
+                    hemos podido saber que está trabajando en un monstruoso motor W con hasta 18 cilindros.</p>
+                <a href="https://www.diariomotor.com/noticia/motor-18-cilindros-porsche/" 
+                    target="_blank">Leer artículo</a>
+            </article>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="footer-content">
+            <div>
+                <h3>Sucursales <i class="fa-solid fa-location-dot"></i> </h3>
+                <a href="https://www.google.com.pa/maps/place/Bremen+Autoservice+%7C+Tumba+Muerto/@9.0250389,-79.5249767,17z/data=!3m1!4b1!4m5!3m4!1s0x8faca8310de37e5f:0x8be2ef2c4b17f68c!8m2!3d9.0250389!4d-79.522788?hl=es&shorturl=1"
+                    target="_blank">
+                    Sucursal Tumba Muerto</a>
+                <a href="https://www.google.com.pa/maps/dir/Bremen+Autoservicio,+Calle+F+Sur,+David/8.4236304,-82.4320052/@8.4237538,-82.4319606,20.03z/data=!4m9!4m8!1m5!1m1!1s0x8fa59d77fb92d9bb:0xc8b5459ac19adc4d!2m2!1d-82.4320132!2d8.4236938!1m0!3e0?hl=es&shorturl=1"
+                    target="_blank">
+                    Sucursal David</a>
+                <a href="https://www.google.com.pa/maps/dir/Bremen+Autoservice+%7C+Chitr%C3%A9,+Calle+Francisco+Corro,+Chitr%C3%A9//@7.9602049,-80.4648923,13z/data=!4m9!4m8!1m5!1m1!1s0x8fad94ea5554d719:0xbe378ed061f1bf03!2m2!1d-80.4298725!2d7.9602064!1m0!3e0?hl=es&shorturl=1"
+                    target="_blank">
+                    Sucursal Chitré</a>
+                <a href="https://www.google.com.pa/maps/dir/Bremen+Autoservice+%7C+Chitr%C3%A9,+Calle+Francisco+Corro,+Chitr%C3%A9//@7.9602049,-80.4648923,13z/data=!4m9!4m8!1m5!1m1!1s0x8fad94ea5554d719:0xbe378ed061f1bf03!2m2!1d-80.4298725!2d7.9602064!1m0!3e0?hl=es&shorturl=1"
+                    target="_blank">
+                    Sucursal Calle 50</a>
+                <a href="https://www.google.com.pa/maps/dir/Autoservice+Bremen+%7C+Santiago,+Interamericana,+Santiago//@8.1045773,-81.0051298,13z/data=!4m9!4m8!1m5!1m1!1s0x8fae7216a9e106ed:0xc6edef226e115bb8!2m2!1d-80.97011!2d8.1045788!1m0!3e0?hl=es&shorturl=1"
+                    target="_blank">
+                    Sucursal 24 de Diciembre</a>
+
+            </div>
+            <div>
+                <img src="../../ASSETS/IMAGENES/Logo_Horizontal.png" alt="Logo Mecario" class="logo-img">
+                <h3>Síguenos <i class="fa-solid fa-users"></i> </h3>
+                <a href="#" class="icon-link"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="icon-link"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="icon-link"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div>
+                <h3>Contacto <i class="fa-solid fa-phone"></i> </h3>
+                <p>info@mecario.com</p>
+                <p>+507 1234-5678</p>
+                <p>377-9827</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Mecario. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- 
+    Display de Login
+    - Este contenedor actúa como una ventana emergente para iniciar sesión.
+    - Por defecto está oculto mediante CSS, y se muestra cuando se ejecuta la 
+      función abrirLogin() desde JavaScript.
+    -->
+    <div id="modalLogin" class="modal">
+        <!--Contenido interno del modal-->
+        <div class="modal-content">
+            <!-- Ejecuta cerrarLogin() desde JS para ocultar el display -->
+            <span class="close" onclick="cerrarLogin()">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <!-- Formulario de login -->
+            <form>
+                <div class="form-group">
+                    <label for="usuario">Usuario</label>
+                    <input type="text" id="usuario" placeholder="Ingresa tu usuario">
+                </div>
+                <div class="form-group">
+                    <label for="password">Contraseña</label>
+                    <input type="password" id="password" placeholder="******">
+                </div>
+                <button type="button" class="btn-login" style="width: 100%; margin-top: 10px;">Ingresar</button>
+            </form>
+        </div>
+    </div>
+    <script src="../JAVASCRIPT/Home.js"></script>
 </body>
 </html>

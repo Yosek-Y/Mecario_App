@@ -1,1 +1,581 @@
-/*Estilos del Home*/
+/*Variables a nivel del CSS*/
+:root {
+    --color-primario: #FFC107; /* Amarillo/Dorado tomado del logo */
+    --color-secundario: #000000; /* Negro profundo */
+    --color-texto: #333;
+    --color-blanco: #ffffff;
+    --fuente-titulos: 'Montserrat', sans-serif; /* Fuente para Títulos */
+    --fuente-cuerpo: 'Roboto', sans-serif; /* Fuente para el cuerpo */
+}
+
+/*Reseteo basico*/
+/* Elimina márgenes/paddings por defecto */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Configura la fuente del documento, color de fondo, color
+del texto y la altura de línea para mejorar la legibilidad. */
+body {
+    font-family: var(--fuente-cuerpo);
+    background-color: #f4f4f4;
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/*Tipografia*/
+h1, h2, h3, h4 {
+    font-family: var(--fuente-titulos);
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-weight: 800;
+}
+
+/* --- HEADER Y NAVEGACIÓN --- */
+header {
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    padding: 1rem 5%;   /*Padding para espaciado interno*/
+    display: flex;
+    /* Distribuye el espacio: Logo a la izquierda, Iconos/Login a la derecha */
+    justify-content: space-between; 
+    align-items: center;
+    position: sticky; /* Header pegado arriba */
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor del Logo */
+.logo-container {
+    display: flex;  /*Alinea horizontalmente la imagen del logo y el nombre de la marca*/
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    height: 100px;
+    width: auto; /*Mantiene proporción automáticamente*/
+    border-radius: 5px;
+}
+
+.brand-name {
+    font-family: var(--fuente-titulos);
+    font-size: 1.9rem;
+    color: var(--color-primario);
+    letter-spacing: 2px;
+}
+
+/* Navegación Principal */
+nav {
+    margin: 0 auto;
+}
+
+nav ul {
+    display: flex; /*Se muestra en una sola fila usando flexbox*/
+    list-style: none;
+    gap: 20px;
+}
+
+nav a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s; /*Transición suave al pasar el mouse*/
+    padding: 20px 15px;
+    display: block;
+    font-size: 1.5rem;
+}
+
+nav a:hover {
+    color: var(--color-primario); /* Cambia a amarillo al pasar el mouse */
+}
+
+nav ul { 
+    display: flex; /* Se muestra en una sola fila usando flexbox */
+    list-style: none; 
+    gap: 20px;
+}
+
+/* Estilos para los enlaces de navegación */
+nav a { 
+    color: var(--color-blanco);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    padding: 20px 15px;
+    display: block;
+    font-size: 1.5rem;
+}
+
+/* Efecto hover para los enlaces de navegación */
+nav a:hover {
+    color: var(--color-primario);
+}
+
+/* Estilo para el enlace activo */
+nav a.active {
+    color: var(--color-primario);   /* Amarillo cuando está activa la sección */
+    font-weight: bold;              /* Negrita */
+    border-bottom: 3px solid var(--color-primario); /* Subrayado grueso */
+}
+
+/* Banner de Iconos (Búsqueda, Redes, Login) */
+.top-banner-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Tamaño de los iconos en el banner superior */
+.top-banner-icons .icon-link {
+    font-size: 1.5rem;
+}
+
+/* Estilos para los iconos */
+.icon-link {
+    color: var(--color-blanco);
+    font-size: 1.2rem;
+    transition: transform 0.3s, color 0.3s;
+}
+
+/* Efecto hover para los iconos */
+.icon-link:hover {
+    color: var(--color-primario);
+    transform: scale(1.1);
+}
+
+/* Botón de Login */
+.btn-login {
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+    /* Aumentar tamaño de fuente */
+    transition: background 0.3s;
+}
+
+/* Efecto hover para el botón de login */
+.btn-login:hover {
+    background-color: #e0a800;
+}
+
+/* --- SECCIONES PRINCIPALES --- */
+
+/* Margen superior para secciones al hacer scroll */
+#servicios,
+#noticias {
+    scroll-margin-top: 80px;
+}
+
+/* Inicio Section (Portada) */
+
+.inicio {
+    scroll-margin-top: 0px;
+    height: 82vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url('https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-blanco);
+}
+
+/* Contenido dentro de la sección de inicio */
+.inicio-content h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+/* Párrafo dentro de la sección de inicio */
+.inicio-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+/* Sección de Servicios */
+.servicios {
+    padding: 5rem 10%;
+    text-align: center;
+}
+
+/* Título de la sección de servicios */
+.servicios h2 {
+    margin-bottom: 3rem;
+    color: var(--color-secundario);
+    font-size: 2.5rem;
+}
+
+/* Grid para los servicios */
+.grid-servicios {
+    display: grid;
+    /* Ajusta automáticamente el número de columnas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 30px;
+}
+
+/* Tarjetas de servicio individuales */
+.card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+/* Efecto hover para las tarjetas de servicio */
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Título dentro de las tarjetas de servicio */
+.card i {
+    font-size: 3rem;
+    color: var(--color-primario);
+    margin-bottom: 20px;
+}
+
+/* Sección de Noticias */
+.noticias {
+    padding: 5rem 10%;
+    background: #fff;
+}
+
+/* Título de la sección de noticias */
+.noticias h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--color-secundario);
+}
+
+/* Contenedor de noticias en grid */
+.contenedor-noticias {
+    display: grid;
+    /* Ajusta automáticamente el número de columnas */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 30px;
+    align-items: start;
+}
+
+/* Tarjetas individuales de noticias */
+.noticia-card {
+    background: #fafafa;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Título dentro de las tarjetas de noticias */
+.noticia-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+
+/* Imagen dentro de las tarjetas de noticias */
+.noticia-card img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+/* Enlace "Leer más" dentro de las tarjetas de noticias */
+.noticia-card a {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--color-primario);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* Efecto hover para el enlace "Leer más" */
+.noticia-card a:hover {
+    color: #e0a800;
+}
+
+/* Tarjeta de video */
+.video-card {
+    padding: 25px; /* el video ya necesita ocupar el ancho completo */
+    overflow: hidden;
+}
+
+/* Contenedor responsivo para video */
+.video-card .video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* relación 16:9 */
+    height: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+/* El iframe ocupa todo el contenedor */
+.video-card .video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: 10px;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: var(--color-secundario);
+    color: #ccc;
+    padding: 40px 10%;
+    text-align: center;
+}
+
+/* Contenido del footer */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+/* Títulos dentro del footer */
+footer h3 {
+    color: var(--color-blanco);
+    margin-bottom: 15px;
+}
+
+/* Estilo base de los enlaces del footer */
+footer a {
+    color: var(--color-blanco);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    transition: color 0.2s ease, transform 0.2s ease; /* Transiciones suaves */
+}
+
+/* Enlaces visitados → amarillos */
+footer a:visited {
+    color: #FFC107;
+}
+
+/* Hover animado */
+footer a:hover {
+    color: var(--color-primario); /* cambia a tu color principal */
+    transform: translateX(2px);   /* movimiento elegante */
+}
+
+/* Contenedor de los iconos de redes sociales */
+footer .icon-link {
+    display: inline-block; /* Ahora los <a> se alinean horizontalmente */
+    margin-right: 15px;    /* Separación entre iconos */
+}
+
+/* Icono de siguenos */
+footer .icon-link i {
+    color: var(--color-blanco);
+    display: inline-block;
+    font-size: 1.6rem;   /* Aumenta el tamaño */
+    margin-right: 15px;  /* Separación entre iconos */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Animación al pasar encima */
+footer .icon-link i:hover {
+    transform: scale(1.2);
+    color: var(--color-primario);
+}
+
+/* Enlaces dentro del footer */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    align-items: center;
+    justify-content: center;
+}
+
+/* Contenido del modal */
+.modal-content {
+    background-color: #fefefe;
+    padding: 40px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    border-top: 5px solid var(--color-primario);
+}
+
+/* Botón de cierre del modal */
+.close {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* Estilos para el formulario dentro del modal */
+.form-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+/* Estilos para las etiquetas del formulario */
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/*Responsive Design*/
+/* RESPONSIVE - MÓVILES PEQUEÑOS (≤ 480px) */
+@media (max-width: 480px) {
+
+    /* Ajustes para el header en móviles pequeños */
+    header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 1rem 0.5rem;
+        text-align: center;
+    }
+
+    /* Ajustes para el logo en móviles pequeños */
+    .logo-img {
+        height: 60px;
+    }
+
+    /* Ajustes para el nombre de la marca en móviles pequeños */
+    .brand-name {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+
+    /* Ajustes para la navegación en móviles pequeños */
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    /* Ajustes para los enlaces de navegación en móviles pequeños */
+    nav a {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
+    /* Ajustes para el banner de iconos en móviles pequeños */
+    .inicio {
+        height: 60vh;
+        padding: 0 10px;
+    }
+
+    /* Ajustes para el contenido del héroe en móviles pequeños */
+    .inicio-content h1 {
+        font-size: 1.5rem;
+    }
+
+    /* Ajustes para el párrafo del héroe en móviles pequeños */
+    .inicio-content p {
+        font-size: 0.9rem;
+    }
+
+    /* Ajustes para la cuadrícula de servicios en móviles pequeños */
+    .grid-servicios,
+    .contenedor-noticias {
+        grid-template-columns: 1fr;
+    }
+
+    /* Ajustes para las tarjetas en móviles pequeños */
+    .card {
+        padding: 20px;
+    }
+
+    /* Ajustes para las tarjetas de noticias en móviles pequeños */
+    .noticia-card h3 {
+        font-size: 1.1rem;
+    }
+
+    /* Ajustes para el contenido del modal en móviles pequeños */
+    .modal-content {
+        width: 90%;
+        padding: 25px;
+    }
+}
+
+
+/* RESPONSIVE - TABLETS Y MÓVILES GRANDES (≤ 768px) */
+@media (max-width: 768px) {
+
+    /* Ajustes para el header en tablets y móviles grandes */
+    header {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    /* Ajustes para la navegación en tablets y móviles grandes */
+    nav {
+        margin: 0;
+    }
+
+    /* Ajustes para la lista de navegación en tablets y móviles grandes */
+    nav ul {
+        margin-top: 15px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+        gap: 15px;
+    }
+
+    /* Ajustes para los enlaces de navegación en tablets y móviles grandes */
+    nav a {
+        font-size: 1.3rem;
+        padding: 12px 10px;
+    }
+
+    /* Ajustes para el banner de iconos en tablets y móviles grandes */
+    .top-banner-icons {
+        margin-top: 15px;
+    }
+
+    /* Ajustes para la sección de inicio en tablets y móviles grandes */
+    .inicio-content h1 {
+        font-size: 2rem;
+    }
+
+    /* Ajustes para el párrafo del héroe en tablets y móviles grandes */
+    .inicio-content p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    /* Ajustes para la cuadrícula de servicios en tablets y móviles grandes */
+    .grid-servicios {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+
+    /* Ajustes para la cuadrícula de noticias en tablets y móviles grandes */
+    .contenedor-noticias {
+        grid-template-columns: 1fr;
+    }
+}
