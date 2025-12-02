@@ -73,6 +73,7 @@ namespace Mecario_BackEnd.Servicios
             return nuevo;
         }
 
+        //Listar todos los clientes de la base
         public async Task<List<TodosLosClientesDTO>> ListarClientes()
         {
             var clientes = await _context.Clientes.ToListAsync();
@@ -86,6 +87,40 @@ namespace Mecario_BackEnd.Servicios
             }).ToList();
 
             return lista;
+        }
+
+        //Buscar un cliente en especifico por nombre o correo
+        public async Task<List<BuscarClienteDTO>> BuscarCliente(string? nombre, string? correo)
+        {
+            if (string.IsNullOrWhiteSpace(nombre) && string.IsNullOrWhiteSpace(correo))
+                throw new ArgumentException("Debe proporcionar un nombre o un correo.");
+
+            var query = _context.Clientes.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(nombre))
+            {
+                query = query.Where(c => c.nombreCliente.Contains(nombre));
+            }
+
+            if (!string.IsNullOrWhiteSpace(correo))
+            {
+                query = query.Where(c => c.correoCliente.ToLower() == correo.ToLower());
+            }
+
+            var clientes = await query.ToListAsync();
+
+            if (clientes.Count == 0)
+                throw new Exception("No se encontraron clientes con los datos proporcionados.");
+
+            // Mapear a DTO
+            return clientes.Select(c => new BuscarClienteDTO
+            {
+                idCliente = c.idCliente,
+                nombreCliente = c.nombreCliente,
+                telefonoCliente = c.telefonoCliente,
+                correoCliente = c.correoCliente,
+                direccionCliente = c.direccionCliente
+            }).ToList();
         }
     }
 }

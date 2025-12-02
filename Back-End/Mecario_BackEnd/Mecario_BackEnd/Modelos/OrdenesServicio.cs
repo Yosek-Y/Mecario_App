@@ -17,5 +17,8 @@ namespace Mecario_BackEnd.Modelos
         //RELACIONES DE LA ENTIDAD ORDENES SERVICIOS
         //Relación 1:N --> Una Orden de servicio produce un Caso
         public ICollection<Casos> casos { get; set; }
+
+        //Relación N:N con Servicios
+        public ICollection<ServiciosMecanicos> Servicios { get; set; }
     }
 }

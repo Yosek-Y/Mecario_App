@@ -15,4 +15,3 @@ namespace Mecario_BackEnd.Modelos
         public ICollection<Vehiculos> Vehiculos { get; set; }
     }
 }
-                                                    

@@ -87,5 +87,29 @@ namespace Mecario_BackEnd.Controllers
             }
         }
 
+        //Protocolo HTTP Get para obtener todas las piezas
+        //GET: Api/Piezas/TodasLasPiezas
+        [HttpGet("TodasLasPiezas")]
+        public async Task<IActionResult> ObtenerTodasLasPiezas()
+        {
+            var piezas = await _service.ObtenerTodasLasPiezasAsync();
+            return Ok(piezas);
+        }
+
+        //Protocolo HTTP Get para obtener todas las piezas por categoria
+        //GET: Api/Piezas/Categoria/{categoriaId}
+        [HttpGet("Categoria/{categoriaId}")]
+        public async Task<IActionResult> ObtenerPiezasPorCategoria(int categoriaId)
+        {
+            try
+            {
+                var piezas = await _service.ObtenerPiezasPorCategoriaAsync(categoriaId);
+                return Ok(piezas);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }

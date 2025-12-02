@@ -15,6 +15,7 @@ namespace Mecario_BackEnd.Controllers
             _service = service;
         }
 
+        //Protocolo HTTP Post para agregar un vehiculo a un cliente 
         // POST: Api/Vehiculos/AgregarVehiculo
         [HttpPost("AgregarVehiculo")]
         public async Task<IActionResult> AgregarVehiculo([FromBody] AgregarVehiculoDTO dto)
@@ -33,6 +34,15 @@ namespace Mecario_BackEnd.Controllers
             {
                 return StatusCode(500, new { error = "Error interno del servidor", detalle = ex.Message });
             }
+        }
+
+        //Protocolo HTTP Get para obtener los vehiculos de un cliente 
+        // GET: Api/Vehiculos/ListarPorCliente/{idCliente}
+        [HttpGet("ListarPorCliente/{idCliente}")]
+        public async Task<IActionResult> ListarVehiculosPorCliente(int idCliente)
+        {
+            var lista = await _service.ListarVehiculosCliente(idCliente);
+            return Ok(lista);
         }
     }
 }

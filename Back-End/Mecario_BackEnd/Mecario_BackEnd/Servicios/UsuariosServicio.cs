@@ -80,5 +80,20 @@ namespace Mecario_BackEnd.Servicios
 
             return mecanicos;
         }
+
+        //Metodo de inicio de sesion
+        public async Task<object> IniciarSesion(InicioSesionDTO dto)
+        {
+            var user = await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.userName == dto.usuario);
+
+            if (user == null)
+                return "El usuario o contraseña es incorrecta";
+
+            if (user.userPassword != dto.contrasena)
+                return "El usuario o contraseña es incorrecta";
+
+            return new { idUsuario = user.idUsuario };
+        }
     }
 }

@@ -118,5 +118,45 @@ namespace Mecario_BackEnd.Servicios
             return pieza;
         }
 
+        //Metodo para ver todas las piezas 
+        public async Task<List<TodasLasPiezasDTO>> ObtenerTodasLasPiezasAsync()
+        {
+            var piezas = await _context.Piezas.ToListAsync();
+
+            return piezas.Select(p => new TodasLasPiezasDTO
+            {
+                NombrePieza = p.nombrePieza,
+                CategoriaPieza = p.categoriaPieza.ToString(), // Convertir enum a string
+                DescripcionPieza = p.descripcionPieza,
+                CodigoPieza = p.codigoPieza,
+                PrecioUnidad = p.precioUnidad,
+                StockActual = p.stockActual
+            }).ToList();
+        }
+
+        //Metodo para ver las piezas por categoria
+        public async Task<List<TodasLasPiezasDTO>> ObtenerPiezasPorCategoriaAsync(int categoriaId)
+        {
+            // Validar que el ID de categoría sea válido
+            if (categoriaId < 1 || categoriaId > 12)
+            {
+                throw new ArgumentException("El ID de categoría debe estar entre 1 y 12.");
+            }
+
+            var piezas = await _context.Piezas
+                .Where(p => (int)p.categoriaPieza == categoriaId)
+                .ToListAsync();
+
+            return piezas.Select(p => new TodasLasPiezasDTO
+            {
+                NombrePieza = p.nombrePieza,
+                CategoriaPieza = p.categoriaPieza.ToString(),
+                DescripcionPieza = p.descripcionPieza,
+                CodigoPieza = p.codigoPieza,
+                PrecioUnidad = p.precioUnidad,
+                StockActual = p.stockActual
+            }).ToList();
+        }
+
     }
 }

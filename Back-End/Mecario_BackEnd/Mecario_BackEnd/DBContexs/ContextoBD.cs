@@ -10,7 +10,6 @@ namespace Mecario_BackEnd.DBContexs
         {
         
         }
-
         public DbSet <Usuarios> Usuarios { get; set; }
 
         public DbSet <Vehiculos> Vehiculos { get; set; }
@@ -18,6 +17,8 @@ namespace Mecario_BackEnd.DBContexs
         public DbSet <Piezas> Piezas { get; set; }
 
         public DbSet <OrdenesServicio> OrdenesServicios { get; set; }
+
+        public DbSet <ServiciosMecanicos> ServiciosMecanicos {get; set;}
 
         public DbSet <DetallesPiezas> DetallesPiezas { get; set; }
 
@@ -93,6 +94,40 @@ namespace Mecario_BackEnd.DBContexs
                       .WithOne(c => c.ordenesServicio)
                       .HasForeignKey(c => c.idOrdenServicio)
                       .OnDelete(DeleteBehavior.Cascade);
+
+                // RELACIÓN MUCHOS A MUCHOS CON SERVICIOS
+                entity.HasMany(o => o.Servicios)
+                      .WithMany(s => s.OrdenesServicio)
+                      .UsingEntity<Dictionary<string, object>>(
+                            "OrdenServicio_Servicio",
+                            j => j
+                                  .HasOne<ServiciosMecanicos>()
+                                  .WithMany()
+                                  .HasForeignKey("idServicio")
+                                  .OnDelete(DeleteBehavior.Cascade),
+                            j => j
+                                  .HasOne<OrdenesServicio>()
+                                  .WithMany()
+                                  .HasForeignKey("idOrden")
+                                  .OnDelete(DeleteBehavior.Cascade),
+                            j =>
+                            {
+                                j.HasKey("idOrden", "idServicio");
+                                j.ToTable("OrdenServicio_Servicio"); // Nombre de la tabla puente
+                            }
+                      );
+            });
+
+            // ================================
+            // ||  TABLA SERVICIOS MECANICOS ||
+            // ================================
+            modelBuilder.Entity<ServiciosMecanicos>(entity =>
+            {
+                entity.HasKey(s => s.idServicio);
+                entity.Property(s => s.idServicio).ValueGeneratedOnAdd();
+                entity.Property(s => s.servicio).IsRequired();                                    //Que servicio es
+                entity.Property(s => s.tipoServicio).IsRequired().HasConversion<string>();        // Guarda enum como string
+                entity.Property(s => s.precio).IsRequired().HasColumnType("decimal(10,2)");
             });
 
             // ======================
@@ -161,7 +196,7 @@ namespace Mecario_BackEnd.DBContexs
                 entity.Property(e => e.idDetalleCaso).ValueGeneratedOnAdd();
                 //CAMPOS OBLIGATORIOS (NOT NULL)
                 entity.Property(e => e.tareaRealizada).IsRequired();            //Tarea que se realizo en el caso
-                entity.Property(e => e.hora).IsRequired();                      //Hora en la que se termino una de las tareas del caso
+                entity.Property(e => e.hora).IsRequired();                      //Hora en la que se termino una de las tareas del 
             });
 
             // ====================

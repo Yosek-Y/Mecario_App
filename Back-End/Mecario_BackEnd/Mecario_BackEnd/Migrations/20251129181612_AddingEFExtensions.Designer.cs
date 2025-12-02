@@ -4,6 +4,7 @@ using Mecario_BackEnd.DBContexs;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Mecario_BackEnd.Migrations
 {
     [DbContext(typeof(ContextoBD))]
-    partial class ContextoBDModelSnapshot : ModelSnapshot
+    [Migration("20251129181612_AddingEFExtensions")]
+    partial class AddingEFExtensions
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -210,30 +213,6 @@ namespace Mecario_BackEnd.Migrations
                     b.ToTable("Piezas");
                 });
 
-            modelBuilder.Entity("Mecario_BackEnd.Modelos.ServiciosMecanicos", b =>
-                {
-                    b.Property<int>("idServicio")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("idServicio"));
-
-                    b.Property<decimal>("precio")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<string>("servicio")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("tipoServicio")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("idServicio");
-
-                    b.ToTable("ServiciosMecanicos");
-                });
-
             modelBuilder.Entity("Mecario_BackEnd.Modelos.Usuarios", b =>
                 {
                     b.Property<int>("idUsuario")
@@ -327,21 +306,6 @@ namespace Mecario_BackEnd.Migrations
                     b.ToTable("Vehiculos");
                 });
 
-            modelBuilder.Entity("OrdenServicio_Servicio", b =>
-                {
-                    b.Property<int>("idOrden")
-                        .HasColumnType("int");
-
-                    b.Property<int>("idServicio")
-                        .HasColumnType("int");
-
-                    b.HasKey("idOrden", "idServicio");
-
-                    b.HasIndex("idServicio");
-
-                    b.ToTable("OrdenServicio_Servicio", (string)null);
-                });
-
             modelBuilder.Entity("Mecario_BackEnd.Modelos.Casos", b =>
                 {
                     b.HasOne("Mecario_BackEnd.Modelos.OrdenesServicio", "ordenesServicio")
@@ -411,21 +375,6 @@ namespace Mecario_BackEnd.Migrations
                         .IsRequired();
 
                     b.Navigation("Clientes");
-                });
-
-            modelBuilder.Entity("OrdenServicio_Servicio", b =>
-                {
-                    b.HasOne("Mecario_BackEnd.Modelos.OrdenesServicio", null)
-                        .WithMany()
-                        .HasForeignKey("idOrden")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Mecario_BackEnd.Modelos.ServiciosMecanicos", null)
-                        .WithMany()
-                        .HasForeignKey("idServicio")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Mecario_BackEnd.Modelos.Casos", b =>

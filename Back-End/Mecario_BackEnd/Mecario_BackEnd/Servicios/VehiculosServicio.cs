@@ -60,5 +60,25 @@ namespace Mecario_BackEnd.Servicios
 
             return "Vehículo agregado correctamente al cliente.";
         }
+
+        //Obtener todos los vehiculos de un cliente en especifico
+        public async Task<List<VehiculosClienteDTO>> ListarVehiculosCliente(int idCliente)
+        {
+            var vehiculos = await _context.Vehiculos
+                .Where(v => v.idCliente == idCliente)
+                .Select(v => new VehiculosClienteDTO
+                {
+                    idVehiculo = v.idVehiculo,
+                    placa = v.placa,
+                    marca = v.marca,
+                    modelo = v.modelo,
+                    anio = v.anio,
+                    color = v.color,
+                    numeroChasis = v.numeroChasis
+                })
+                .ToListAsync();
+
+            return vehiculos;
+        }
     }
 }

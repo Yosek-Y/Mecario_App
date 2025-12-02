@@ -41,7 +41,7 @@ namespace Mecario_BackEnd.Controllers
         }
 
         //Protocolo HTTP Get para listar todos los mecanicos de la base
-        //POST: api/Piezas/Mecanicos
+        //POST: api/Usuarios/Mecanicos
         [HttpGet("Mecanicos")]
         public async Task<IActionResult> ObtenerMecanicos()
         {
@@ -58,6 +58,19 @@ namespace Mecario_BackEnd.Controllers
             {
                 return StatusCode(500, new { error = "Error interno del servidor", detalle = ex.Message });
             }
+        }
+
+        //Protocolo HTTP Post para el inicio de sesion
+        //POST: Api/Usuarios/Iniciar-Sesion
+        [HttpPost("Iniciar-Sesion")]
+        public async Task<IActionResult> IniciarSesion([FromBody] InicioSesionDTO dto)
+        {
+            var resultado = await _service.IniciarSesion(dto);
+
+            if (resultado is string)
+                return BadRequest(resultado);
+
+            return Ok(resultado);
         }
     }
 }

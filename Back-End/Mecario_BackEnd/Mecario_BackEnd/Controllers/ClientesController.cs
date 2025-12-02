@@ -69,5 +69,21 @@ namespace Mecario_BackEnd.Controllers
                 });
             }
         }
+
+        //Protocolo HTTP Get para buscar un cliente
+        //POST: Api/Clientes/Buscar
+        [HttpGet("Buscar")]
+        public async Task<IActionResult> BuscarCliente([FromQuery] string? nombre, [FromQuery] string? correo)
+        {
+            try
+            {
+                var resultado = await _service.BuscarCliente(nombre, correo);
+                return Ok(resultado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
