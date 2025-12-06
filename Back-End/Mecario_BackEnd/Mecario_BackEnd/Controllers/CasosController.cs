@@ -1,4 +1,5 @@
-﻿using Mecario_BackEnd.Modelos.DTOs;
+﻿using Mecario_BackEnd.Modelos;
+using Mecario_BackEnd.Modelos.DTOs;
 using Mecario_BackEnd.Servicios;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -203,6 +204,44 @@ namespace Mecario_BackEnd.Controllers
             {
                 return StatusCode(500, new { error = "Error interno del servidor", detalle = ex.Message });
             }
+        }
+
+        //Peticion GET para ver todos los casos segun el status de un mecanico
+        // GET api/Casos/mecanico/{idUsuario}/estado/{estado}
+        [HttpGet("Mecanico/{idUsuario}/Estado/{estado}")]
+        public async Task<IActionResult> ObtenerCasosPorMecanicoYEstado(int idUsuario, int estado)
+        {
+            try
+            {
+                // Convertir número a enum
+                if (!Enum.IsDefined(typeof(Casos.EstadoCaso), estado))
+                    return BadRequest("El estado del caso no es válido. (1=noEmpezado, 2=enProceso, 3=terminado)");
+
+                var estadoEnum = (Casos.EstadoCaso)estado;
+
+                var casos = await _service.ObtenerCasosPorMecanicoYEstadoAsync(idUsuario, estadoEnum);
+
+                return Ok(casos);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        //Peticion Get para trae esos casos donde no hay un mecanico asignado
+        // GET: Api/Casos/NoAsignados
+        [HttpGet("NoAsignados")]
+        public async Task<IActionResult> ObtenerCasosSinMecanico()
+        {
+            var lista = await _service.ObtenerCasosSinMecanico();
+
+            if (lista.Count == 0)
+            {
+                return NotFound(new { mensaje = "No hay casos sin mecánico asignado." });
+            }
+
+            return Ok(lista);
         }
     }
 }

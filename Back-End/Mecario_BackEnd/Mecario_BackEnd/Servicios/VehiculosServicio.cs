@@ -68,7 +68,6 @@ namespace Mecario_BackEnd.Servicios
                 .Where(v => v.idCliente == idCliente)
                 .Select(v => new VehiculosClienteDTO
                 {
-                    idVehiculo = v.idVehiculo,
                     placa = v.placa,
                     marca = v.marca,
                     modelo = v.modelo,
@@ -77,6 +76,10 @@ namespace Mecario_BackEnd.Servicios
                     numeroChasis = v.numeroChasis
                 })
                 .ToListAsync();
+
+            // Si la lista está vacía, regreso null para que el controlador interprete.
+            if (vehiculos.Count == 0)
+                return null;
 
             return vehiculos;
         }

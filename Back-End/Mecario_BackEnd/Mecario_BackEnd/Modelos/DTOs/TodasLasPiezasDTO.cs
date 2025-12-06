@@ -2,6 +2,7 @@
 {
     public class TodasLasPiezasDTO
     {
+        public int IdPieza { get; set; }
         public string NombrePieza { get; set; }
         public string CategoriaPieza { get; set; }
         public string DescripcionPieza { get; set; }

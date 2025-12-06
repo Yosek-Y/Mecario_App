@@ -125,6 +125,7 @@ namespace Mecario_BackEnd.Servicios
 
             return piezas.Select(p => new TodasLasPiezasDTO
             {
+                IdPieza = p.idPieza,
                 NombrePieza = p.nombrePieza,
                 CategoriaPieza = p.categoriaPieza.ToString(), // Convertir enum a string
                 DescripcionPieza = p.descripcionPieza,
@@ -149,6 +150,7 @@ namespace Mecario_BackEnd.Servicios
 
             return piezas.Select(p => new TodasLasPiezasDTO
             {
+                IdPieza = p.idPieza,
                 NombrePieza = p.nombrePieza,
                 CategoriaPieza = p.categoriaPieza.ToString(),
                 DescripcionPieza = p.descripcionPieza,

@@ -42,7 +42,21 @@ namespace Mecario_BackEnd.Controllers
         public async Task<IActionResult> ListarVehiculosPorCliente(int idCliente)
         {
             var lista = await _service.ListarVehiculosCliente(idCliente);
-            return Ok(lista);
+
+            if (lista == null)
+            {
+                return NotFound(new
+                {
+                    mensaje = "El cliente no tiene vehículos registrados"
+                });
+            }
+
+            return Ok(new
+            {
+                mensaje = "Vehículos obtenidos correctamente",
+                data = lista
+            });
         }
+
     }
 }

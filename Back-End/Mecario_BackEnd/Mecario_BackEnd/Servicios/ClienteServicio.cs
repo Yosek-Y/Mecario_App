@@ -80,6 +80,7 @@ namespace Mecario_BackEnd.Servicios
 
             var lista = clientes.Select(c => new TodosLosClientesDTO
             {
+                idCliente = c.idCliente,       
                 nombreCliente = c.nombreCliente,
                 telefonoCliente = c.telefonoCliente,
                 correoCliente = c.correoCliente,
@@ -112,7 +113,6 @@ namespace Mecario_BackEnd.Servicios
             if (clientes.Count == 0)
                 throw new Exception("No se encontraron clientes con los datos proporcionados.");
 
-            // Mapear a DTO
             return clientes.Select(c => new BuscarClienteDTO
             {
                 idCliente = c.idCliente,

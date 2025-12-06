@@ -60,6 +60,7 @@ namespace Mecario_BackEnd.Servicios
             // Convertir a DTO
             var lista = casos.Select(c => new CasosDeMecanicoDTO
             {
+                idCaso = c.idCaso,
                 fechaInicio = c.fechaInicio,
                 fechaFin = c.fechaFin,
                 horasTrabajadas = c.horasTrabajadas,
@@ -136,6 +137,7 @@ namespace Mecario_BackEnd.Servicios
                 .Where(c => c.idCaso == idCaso) // Ajusta si se llama distinto (ej: c.id)
                 .Select(c => new FacturaCasoDTO
                 {
+                    idCaso = c.idCaso,
                     totalCaso = c.totalCaso,
                     fechaInicio = c.fechaInicio,
                     fechaFin = c.fechaFin
@@ -215,6 +217,7 @@ namespace Mecario_BackEnd.Servicios
                 orderby c.idCaso
                 select new CasosSegunStatusDTO
                 {
+                    idCaso = c.idCaso,
                     fechaInicio = c.fechaInicio,
                     fechaFin = c.fechaFin,
                     horasTrabajadas = c.horasTrabajadas,
@@ -253,6 +256,52 @@ namespace Mecario_BackEnd.Servicios
             await _context.SaveChangesAsync();
 
             return "Caso asignado correctamente al mecánico.";
+        }
+
+        //Metodo para ver los casos de un mecanico segun su estatus
+        public async Task<List<MostrarCasosMecanicoDTO>> ObtenerCasosPorMecanicoYEstadoAsync(int idUsuario, Casos.EstadoCaso estado)
+        {
+            // Validar que el usuario exista y sea mecánico
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(u => u.idUsuario == idUsuario);
+
+            if (usuario == null)
+                throw new Exception("El usuario no existe.");
+
+            if (usuario.tipoUsuario != Usuarios.Tipousuario.Mecanico)
+                throw new Exception("El usuario no es un mecánico.");
+
+            // Traer casos filtrados
+            var casos = await _context.Casos
+                .Where(c => c.idUsuario == idUsuario && c.estadoCaso == estado)
+                .ToListAsync();
+
+            return casos.Select(c => new MostrarCasosMecanicoDTO
+            {
+                idCaso = c.idCaso,
+                fechaInicio = c.fechaInicio,
+                fechaFin = c.fechaFin,
+                horasTrabajadas = c.horasTrabajadas,
+                estadoCaso = c.estadoCaso.ToString(),
+                totalCaso = c.totalCaso
+            }
+            ).ToList();
+        }
+
+        //Metodo para ver todos esos casos donde no hay un mecanico asignado
+        public async Task<List<CasosSinMecanicoDTO>> ObtenerCasosSinMecanico()
+        {
+            return await _context.Casos
+                .Where(c => c.idUsuario == 0 || c.idUsuario == null)
+                .Select(c => new CasosSinMecanicoDTO
+                {
+                    idCaso = c.idCaso,
+                    fechaInicio = c.fechaInicio,
+                    horasTrabajadas = c.horasTrabajadas,
+                    estadoCaso = c.estadoCaso.ToString(),
+                    totalCaso = c.totalCaso,
+                    idOrdenServicio = c.idOrdenServicio
+                }
+                ).ToListAsync();
         }
     }
 }

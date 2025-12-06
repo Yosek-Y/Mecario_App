@@ -70,6 +70,7 @@ namespace Mecario_BackEnd.Servicios
             var mecanicos = await _context.Usuarios.Where(u => u.tipoUsuario == Usuarios.Tipousuario.Mecanico)
                 .Select(u => new TodosLosMecanicosDTO
                 {
+                    idUsuario = u.idUsuario,
                     nombreUsuario = u.nombreUsuario,
                     telefonoUsuario = u.telefonoUsuario,
                     correoUsuario = u.correoUsuario,
