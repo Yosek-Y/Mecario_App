@@ -261,5 +261,22 @@ namespace Mecario_BackEnd.Controllers
 
             return Ok(resultado);
         }
+
+        // GET: Api/Casos/AllCasos
+        [HttpGet("AllCasos")]
+        public async Task<IActionResult> ObtenerTodos()
+        {
+            try
+            {
+                var lista = await _service.ObtenerTodosAsync();
+                if (lista == null || lista.Count == 0)
+                    return NotFound("No hay casos registrados.");
+                return Ok(lista);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensaje = ex.Message });
+            }
+        }
     }
 }

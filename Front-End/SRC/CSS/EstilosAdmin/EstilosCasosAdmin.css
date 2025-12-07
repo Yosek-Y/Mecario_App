@@ -40,6 +40,11 @@ h4 {
     font-weight: 800;
 }
 
+.titulo-principal {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
 /* --- HEADER Y NAVEGACIÓN --- */
 header {
     background-color: var(--color-secundario);
@@ -261,4 +266,171 @@ nav a.active {
 /* Scroll horizontal elegante */
 .tabla-scroll {
     overflow-x: auto;
+}
+
+/* Nueva Sección de Asignación */
+.asignacion-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-bottom: 15px;
+}
+
+.panel-list h3 {
+    font-family: var(--fuente-titulos);
+    margin-bottom: 10px;
+    color: var(--color-secundario);
+}
+
+.lista-mini {
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 10px;
+    background: #fff;
+}
+
+.item-select {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-select:last-child {
+    border-bottom: none;
+}
+
+.btn-mini {
+    padding: 6px 10px;
+    background: var(--color-secundario);
+    color: var(--color-primario);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--fuente-titulos);
+}
+
+.btn-mini:hover {
+    background: var(--color-primario);
+    color: var(--color-secundario);
+}
+
+.btn-confirmar {
+    width: 100%;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    padding: 12px;
+}
+
+/* Botón destacado para crear caso */
+.card-admin:first-of-type .btn-action {
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    font-size: 1.1rem;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+}
+
+.card-admin:first-of-type .btn-action:hover {
+    background-color: #e0a800;
+    color: #000;
+}
+
+/* ============================
+   TARJETAS DE CASOS (ADMIN)
+=============================== */
+.cards-casos-admin {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.card-caso-admin {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    border-left: 6px solid var(--color-primario);
+    font-size: 1rem;
+}
+
+.card-caso-admin h3 {
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+    color: var(--color-secundario);
+    margin-bottom: 15px;
+}
+
+/* Línea de estado */
+.estado-linea-admin {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    gap: 10px;
+}
+
+.estado-punto-admin {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 6px;
+}
+
+/* ROJO */
+.estado-noempezado {
+    background-color: red;
+}
+
+/* AMARILLO */
+.estado-proceso {
+    background-color: yellow;
+}
+
+/* VERDE */
+.estado-terminado {
+    background-color: green;
+}
+
+/* ===== FILTRO DE ADMIN ===== */
+.filtro-container-admin {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+    margin: 0 40px 20px 40px;
+}
+
+.filtro-container-admin label {
+    font-weight: bold;
+    font-family: var(--fuente-titulos);
+    font-size: 1.1rem;
+}
+
+.filtro-container-admin select {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+/* Recuadro facturación total */
+.total-facturacion-box {
+    margin-top: 15px;
+    padding: 12px 15px;
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    font-weight: bold;
+    font-family: var(--fuente-titulos);
+    border-radius: 6px;
+    font-size: 1.2rem;
+    text-align: right;
 }

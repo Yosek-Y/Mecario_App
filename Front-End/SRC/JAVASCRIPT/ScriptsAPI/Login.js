@@ -43,13 +43,13 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await response.json();
 
             // Guardar en sessionStorage
-            sessionStorage.setItem("idUsuario", data.idUsuario);
             sessionStorage.setItem("tipoUsuario", data.tipoUsuario);
 
             // Redirecciones según el tipo de usuario
             if (data.tipoUsuario === "Admin") {
                 window.location.href = "../PaginasAdmin/CasosAdmin.html";
             } else if (data.tipoUsuario === "Mecanico") {
+                sessionStorage.setItem("idUsuario", data.idUsuario);
                 window.location.href = "../PaginasMecanicos/CasosMecanico.html"; // Cambiar a la página correspondiente para mecánicos
             }
         } catch (error) {

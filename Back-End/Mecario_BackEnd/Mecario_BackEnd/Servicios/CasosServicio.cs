@@ -26,7 +26,7 @@ namespace Mecario_BackEnd.Servicios
             var caso = new Casos
             {
                 idOrdenServicio = dto.idOrdenServicio,
-                idUsuario = dto.idUsuario ?? 0,       // 0 si no hay usuario asignado
+                idUsuario = dto.idUsuario,
                 fechaInicio = DateTime.MinValue,      // Inicial
                 fechaFin = null,                       // Sin terminar
                 horasTrabajadas = 0,
@@ -202,7 +202,7 @@ namespace Mecario_BackEnd.Servicios
 
 
         // Listar casos por estado (status)
-        public async Task<List<CasosSegunStatusDTO>> ListarCasosPorStatusAsync (string status, CancellationToken ct = default)
+        public async Task<List<CasosSegunStatusDTO>> ListarCasosPorStatusAsync(string status, CancellationToken ct = default)
         {
             if (string.IsNullOrWhiteSpace(status))
                 throw new ArgumentException("El parámetro 'status' es obligatorio.");
@@ -251,9 +251,9 @@ namespace Mecario_BackEnd.Servicios
                     fechaFin = c.fechaFin,
                     horasTrabajadas = c.horasTrabajadas,
                     estadoCaso = c.estadoCaso.ToString(),
-                    totalCaso = c.totalCaso,            
+                    totalCaso = c.totalCaso,
                     idUsuario = u.idUsuario,
-                    nombreMecanico = u.nombreUsuario    
+                    nombreMecanico = u.nombreUsuario
                 }
             ).ToListAsync(ct);
 
@@ -359,5 +359,31 @@ namespace Mecario_BackEnd.Servicios
             };
         }
 
+        // Obtener todos los casos
+        public async Task<List<CasoDTO>> ObtenerTodosAsync()
+        {
+            var casos = await _context.Casos
+                .Include(c => c.ordenesServicio)
+                .Include(c => c.usuarios)
+                .Include(c => c.detallesPieza)
+                .ToListAsync();
+
+            return casos.Select(c => new CasoDTO
+            {
+                idCaso = c.idCaso,
+                fechaInicio = c.fechaInicio,
+                fechaFin = c.fechaFin,
+                horasTrabajadas = c.horasTrabajadas,
+                estadoCaso = c.estadoCaso.ToString(),
+                totalCaso = Math.Round(
+                    (c.ordenesServicio?.costoInicial ?? 0) +
+                    (c.detallesPieza?.Sum(dp => dp.subtotal) ?? 0) +
+                    (c.horasTrabajadas * 4.60) * 1.07, 2), // impuesto del 7%
+                idOrdenServicio = c.idOrdenServicio,
+                diagnosticoInicial = c.ordenesServicio?.diagnosticoInicial,
+                idUsuario = c.idUsuario,
+                nombreMecanico = c.usuarios?.nombreUsuario
+            }).ToList();
+        }
     }
 }
