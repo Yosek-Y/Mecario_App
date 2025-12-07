@@ -17,8 +17,8 @@
         public OrdenesServicio ordenesServicio { get; set; }
 
         //FK HACIA USUARIO (solo mecánicos)
-        public int idUsuario { get; set; }
-        public Usuarios usuarios { get; set; }
+        public int? idUsuario { get; set; }
+        public Usuarios? usuarios { get; set; }
 
         //RELACIONES
         //1:N --> Un caso tiene muchos detalles

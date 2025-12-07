@@ -69,5 +69,99 @@
             <!-- Botón de Login -->
             <button class="btn-logout" onclick="window.location.href='../OtrasPaginas/Home.html'">Logout</button>
     </header>
+
+    <main class="casos-admin-container">
+
+        <h1 class="titulo-principal">Gestión de Casos</h1>
+
+        <!-- CREAR CASO -->
+        <section class="card-admin">
+            <h2>Crear Nuevo Caso</h2>
+
+            <p>Para abrir una orden de servicio y generar un nuevo caso, use el siguiente botón:</p>
+
+            <button onclick="window.location.href='../PaginasAdmin/NuevoCasoAdmin.html'" class="btn-action">
+                + Nuevo Caso
+            </button>
+        </section>
+
+        <!-- ASIGNAR  -->
+        <section class="card-admin">
+            <h2>Asignar Caso</h2>
+
+            <div class="asignacion-grid">
+
+                <!-- Lista de Casos Sin Mecánico -->
+                <div class="panel-list">
+                    <h3>Casos Disponibles</h3>
+                    <div id="listaCasosSinMecanico" class="lista-mini"></div>
+                </div>
+
+                <!-- Lista de Mecánicos -->
+                <div class="panel-list">
+                    <h3>Mecánicos</h3>
+                    <div id="listaMecanicos" class="lista-mini"></div>
+                </div>
+
+            </div>
+
+            <button id="btnConfirmarAsignacion" class="btn-action btn-confirmar" disabled>
+                Confirmar Asignación
+            </button>
+
+            <p id="msgAsignarCaso" class="response-message"></p>
+        </section>
+
+        <!-- FILTRO POR ESTADO -->
+        <div class="filtro-container-admin">
+            <label for="filtroEstadoAdmin">Filtrar por estado:</label>
+            <select id="filtroEstadoAdmin">
+                <option value="todos">Todos</option>
+                <option value="noEmpezado">No Empezado</option>
+                <option value="enProceso">En Proceso</option>
+                <option value="terminado">Terminado</option>
+            </select>
+        </div>
+
+
+        <!-- TODOS LOS CASOS-->
+        <section class="card-admin">
+            <h2>Todos los Casos</h2>
+
+            <button id="btnVerTodos" class="btn-action mb-1">Cargar Casos</button>
+
+            <!-- Contenedor de tarjetas -->
+            <div id="cardsTodosCasos" class="cards-casos-admin"></div>
+        </section>
+
+        <!-- 4. FACTURAS -->
+        <section class="card-admin">
+            <h2>Facturas</h2>
+
+            <button id="btnVerFacturas" class="btn-action mb-1">Cargar Facturas</button>
+
+            <div class="tabla-scroll">
+                <table class="tabla" id="tablaFacturas">
+                    <thead>
+                        <tr>
+                            <th>ID Caso</th>
+                            <th>Total</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                            <th>Horas</th>
+                            <th>Mecánico</th>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <div id="totalFacturacionBox" class="total-facturacion-box">
+                    Facturación total: $0.00
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="../../JAVASCRIPT/ScriptsAPI/CasosAdmin.js"></script>
 </body>
+
 </html>
