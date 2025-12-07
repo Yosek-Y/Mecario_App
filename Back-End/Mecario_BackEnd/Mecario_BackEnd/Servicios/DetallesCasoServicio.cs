@@ -36,5 +36,22 @@ namespace Mecario_BackEnd.Servicios
 
             return detalle;
         }
+
+        // Obtener detalles del caso
+        public async Task<List<DetallesCasoDTO>> ObtenerDetallesCasoAsync(int idCaso)
+        {
+            var detalles = await _context.DetallesCasos
+                .Where(d => d.idCaso == idCaso)
+                .OrderBy(d => d.hora)
+                .ToListAsync();
+
+            return detalles.Select(d => new DetallesCasoDTO
+            {
+                idDetalleCaso = d.idDetalleCaso,
+                hora = d.hora,
+                tareaRealizada = d.tareaRealizada,
+                idCaso = d.idCaso
+            }).ToList();
+        }
     }
 }

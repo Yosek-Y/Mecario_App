@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Mecario - Nuevo Caso</title>
+
+    <!-- Font Awesome y Google Fonts (mismo estilo que la app) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Tu CSS principal -->
+    <link rel="stylesheet" href="../../CSS/EstilosMecanico/EstilosCasosMecanicos.css">
+
+    <!-- CSS adicional específico para este formulario -->
+    <style>
+        /* Contenedor principal */
+        .page-container {
+            margin: 30px 5%;
+            display: grid;
+            grid-template-columns: 1fr 420px; /* formulario + columna lateral */
+            gap: 30px;
+            align-items: start;
+        }
+
+        /* Tarjeta de formulario */
+        .card {
+            background: #fff;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            border-left: 6px solid var(--color-primario);
+            font-family: var(--fuente-cuerpo);
+        }
+
+        .card h2 {
+            font-family: var(--fuente-titulos);
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            color: var(--color-secundario);
+        }
+
+        /* Tipo de servicio (radio) */
+        .tipo-servicio {
+            display: flex;
+            gap: 18px;
+            margin-bottom: 14px;
+            align-items: center;
+        }
+
+        .tipo-servicio label {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Contenedor de checkboxes (servicios) */
+        .servicios-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 10px;
+            margin-top: 10px;
+            margin-bottom: 12px;
+        }
+
+        .servicio-item {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            padding: 8px;
+            border-radius: 8px;
+            background: #fafafa;
+            border: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+
+        /* Diagnóstico y costo inicial (oculto/visual) */
+        .form-row {
+            margin-top: 12px;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .form-row textarea {
+            width: 100%;
+            min-height: 70px;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            resize: vertical;
+        }
+
+        .form-row input[type="number"] {
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            width: 160px;
+        }
+
+        /* Botones primarios */
+        .btn-primario {
+            background-color: var(--color-primario);
+            color: var(--color-secundario);
+            font-family: var(--fuente-titulos);
+            padding: 10px 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primario:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        /* Columna derecha (buscador cliente + vehiculos) */
+        .side {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .buscar-cliente {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .buscar-cliente input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .clientes-list, .vehiculos-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 360px;
+            overflow: auto;
+        }
+
+        .cliente-item, .vehiculo-item {
+            background: #fff;
+            border: 1px solid #eee;
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .small-btn {
+            padding: 8px 10px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .btn-vehiculos {
+            background: var(--color-primario);
+            color: var(--color-secundario);
+        }
+
+        .btn-seleccionar {
+            background: #28a745;
+            color: white;
+        }
+
+        /* Mensajes/estado */
+        .info-line { margin-top: 10px; font-size: 0.95rem; color: #444; }
+        .error { color: #c0392b; font-weight: 600; }
+        .success { color: #1e7738; font-weight: 600; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .page-container { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header: puedes incluir tu header real si lo necesitas -->
+    <header>
+        <div class="logo-container">
+            <img src="../../../ASSETS/IMAGENES/Logo_Blanco_Mecario.png" alt="Logo Mecario" class="logo-img">
+            <span class="brand-name">MECARIO</span>
+        </div>
+    </header>
+
+    <main class="page-container">
+        <!-- IZQUIERDA: Formulario para crear orden/caso -->
+        <section class="card">
+            <h2>Nuevo Caso / Crear Orden de Servicio</h2>
+
+            <!-- Tipo de servicio (radio) -->
+            <div>
+                <label style="font-weight:700;">Tipo de Servicio</label>
+                <div class="tipo-servicio" id="tipoServicioGroup">
+                    <label><input type="radio" name="tipoServicio" value="1" checked> Mantenimiento</label>
+                    <label><input type="radio" name="tipoServicio" value="2"> Reparación</label>
+                </div>
+            </div>
+
+            <!-- Lista de servicios (checkboxes) que carga la API -->
+            <div>
+                <label style="font-weight:700; margin-top:8px;">Servicios disponibles</label>
+                <div id="serviciosContainer" class="servicios-list">
+                    <!-- Checkboxes cargados por JS -->
+                </div>
+                <div class="info-line" id="infoServicios">Selecciona los servicios que correspondan.</div>
+            </div>
+
+            <!-- Diagnóstico inicial (aquí mostramos los nombres seleccionados para revisar, pero el string que se envía será los IDs) -->
+            <div class="form-row" style="margin-top:18px;">
+                <textarea id="diagnosticoVisual" placeholder="Diagnóstico legible (opcional) — se llenará automáticamente cuando selecciones servicios" readonly></textarea>
+            </div>
+
+            <!-- Botón Crear Orden + Crear Caso -->
+            <div style="margin-top:18px; display:flex; gap:12px;">
+                <button id="btnCrearOrden" class="btn-primario">Crear Orden y Caso</button>
+                <button id="btnCancelar" class="small-btn" style="background:#eee">Cancelar</button>
+            </div>
+
+            <div id="mensajeEstado" class="info-line"></div>
+        </section>
+
+        <!-- DERECHA: Buscar cliente y seleccionar vehículo -->
+        <aside class="side">
+            <div class="card">
+                <h2>Buscar Cliente</h2>
+                <div class="buscar-cliente">
+                    <input type="text" id="inputNombre" placeholder="Nombre del cliente">
+                    <input type="text" id="inputCorreo" placeholder="Correo del cliente">
+                    <button id="btnBuscarCliente" class="small-btn" style="background:var(--color-primario); color:var(--color-secundario)">Buscar</button>
+                </div>
+
+                <div class="clientes-list" id="clientesList">
+                    <!-- resultados -->
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Vehículos del cliente</h2>
+                <div class="vehiculos-list" id="vehiculosList">
+                    <!-- vehiculos -->
+                </div>
+
+                <div id="vehiculoSeleccionadoInfo" class="info-line">Vehículo seleccionado: <span id="vehiculoSelText">Ninguno</span></div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- JS -->
+    <script src="../../JAVASCRIPT/ScriptsAPI/NuevoCaso.js"></script>
+</body>
+</html>

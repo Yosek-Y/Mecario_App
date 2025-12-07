@@ -68,6 +68,7 @@ namespace Mecario_BackEnd.Servicios
                 .Where(v => v.idCliente == idCliente)
                 .Select(v => new VehiculosClienteDTO
                 {
+                    idVehiculo = v.idVehiculo,
                     placa = v.placa,
                     marca = v.marca,
                     modelo = v.modelo,

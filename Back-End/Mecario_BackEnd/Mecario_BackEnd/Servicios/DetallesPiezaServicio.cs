@@ -54,5 +54,24 @@ namespace Mecario_BackEnd.Servicios
 
             return detalle;
         }
+
+        // Obtener piezas usadas en el caso
+        public async Task<List<DetallesPiezasDTO>> ObtenerPiezasDeCasoAsync(int idCaso)
+        {
+            var piezas = await _context.DetallesPiezas
+                .Include(p => p.piezas)
+                .Where(p => p.idCaso == idCaso)
+                .ToListAsync();
+
+            return piezas.Select(p => new DetallesPiezasDTO
+            {
+                idCaso = p.idCaso,
+                idPieza = p.idPieza,
+                nombrePieza = p.piezas.nombrePieza,
+                cantidad = p.cantidad,
+                precioUnitario = p.precioUnitario,
+                subtotal = p.subtotal
+            }).ToList();
+        }
     }
 }

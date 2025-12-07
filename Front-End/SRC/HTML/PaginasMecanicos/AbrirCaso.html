@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mecario - Abrir Caso</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../../CSS/EstilosMecanico/EstilosAbrirCaso.css">
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="../../../ASSETS/IMAGENES/Logo_Blanco_Mecario.png" alt="Logo" class="logo-img">
+            <span class="brand-name">MECARIO</span>
+        </div>
+    </header>
+
+    <main class="page">
+        <!-- Panel principal: servicios y timer -->
+        <section class="panel" id="panelPrincipal">
+            <div class="top-row">
+                <div>
+                    <h2 id="tituloCaso">Caso #...</h2>
+                    <div id="infoOrden" style="font-size:0.95rem; color:#555;">Orden: ...</div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; align-items:flex-end;">
+                    <div class="timer" id="timerDisplay">00:00:00</div>
+                    <div style="font-size:0.85rem; color:#666; margin-top:6px;">Tiempo trabajado en esta sesión</div>
+                </div>
+            </div>
+
+            <hr style="margin:12px 0; border:none; border-top:1px solid #eee;">
+
+            <div id="serviciosContainer">
+                <!-- servicios cargados por JS -->
+            </div>
+
+            <div id="mensajePrincipal" style="margin-top:8px; font-size:0.95rem;"></div>
+
+            <div class="bottom-actions">
+                <button id="btnFinalizar" class="btn-finalizar" disabled>Finalizar Caso</button>
+                <button id="btnContinuarDespues" class="btn-continuar">Continuar después</button>
+            </div>
+        </section>
+
+        <!-- Columna derecha: registrar piezas y lista de tareas/piezas -->
+        <aside class="side">
+            <div class="panel">
+                <h3>Agregar pieza usada</h3>
+                <div class="field">
+                    <label>Código de pieza</label>
+                    <input id="inputCodigoPieza" placeholder="Ej: PZ-0001">
+                </div>
+                <div class="field">
+                    <label>Cantidad</label>
+                    <input id="inputCantidadPieza" type="number" min="1" value="1">
+                </div>
+                <div style="display:flex; gap:8px;">
+                    <button id="btnRegistrarPieza" style="background:var(--color-primario); color:var(--color-secundario);">Registrar pieza</button>
+                </div>
+
+                <hr style="margin:12px 0; border:none; border-top:1px solid #eee;">
+
+                <h4>Detalles de piezas</h4>
+                <div class="list-mini" id="listaPiezasUsadas">
+                    <!-- detalles devueltos por API -->
+                </div>
+            </div>
+
+            <div class="panel">
+                <h4>Registro de tareas</h4>
+                <div class="list-mini" id="listaTareas">
+                    <!-- tareas registradas (detalles caso) -->
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <script src="../../JAVASCRIPT/ScriptsAPI/AbrirCaso.js"></script>
+</body>
+</html>

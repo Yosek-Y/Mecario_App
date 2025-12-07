@@ -29,6 +29,7 @@ namespace Mecario_BackEnd.Controllers
                     mensaje = "Cliente agregado correctamente",
                     data = new
                     {
+                        nuevoCliente.idCliente,
                         nuevoCliente.nombreCliente,
                         nuevoCliente.telefonoCliente,
                         nuevoCliente.correoCliente,

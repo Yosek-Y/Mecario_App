@@ -11,26 +11,33 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     let listaCasos = [];
 
-    // ===================
-    // 1. Llamar API
-    // ===================
+    //Llamada a la API
     async function cargarCasos() {
         try {
             const response = await fetch(`https://localhost:7292/Api/Casos/Mecanico/Casos_${idMecanico}`);
 
-            if (!response.ok) throw new Error("Error al obtener los casos");
+            const data = await response.json();
 
-            listaCasos = await response.json();
+            //Si el json retorna "El mecánico no tiene casos asignados." muestra el mensaje personalizado
+            if (!response.ok) {
+                if (data.error === "El mecánico no tiene casos asignados.") {
+                    contenedor.innerHTML = "<p>No tienes casos asignados, crea un caso o dile al administrador que te asigne un caso.</p>";
+                } else {
+                    contenedor.innerHTML = `<p>Error: ${data.error || "Error desconocido"}</p>`;
+                }
+                return;
+            }
+
+            listaCasos = data;
             mostrarCasos(listaCasos);
+
 
         } catch (error) {
             contenedor.innerHTML = `<p>Error: ${error.message}</p>`;
         }
     }
 
-    // ===================
-    // 2. Mostrar Casos
-    // ===================
+    //Muestra los casos del mecanico 
     function mostrarCasos(casos) {
         contenedor.innerHTML = "";
 
@@ -63,12 +70,55 @@ document.addEventListener("DOMContentLoaded", async () => {
             `;
 
             contenedor.appendChild(tarjeta);
+            contenedor.appendChild(tarjeta);
+
+            // Agregar listeners a botones que acabamos de insertar
+            // Botón "Comenzar a trabajar"
+            const btnComenzar = tarjeta.querySelector(".comenzar");
+            if (btnComenzar) {
+                btnComenzar.addEventListener("click", async () => {
+                    const dto = {
+                        idCaso: caso.idCaso,
+                        fechaInicio: new Date() // fecha actual
+                    };
+
+                    try {
+                        const res = await fetch("https://localhost:7292/Api/Casos/AbrirCaso", {
+                            method: "PUT",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(dto)
+                        });
+
+                        if (!res.ok) throw new Error("No se pudo abrir el caso");
+
+                        const casoActualizado = await res.json();
+
+                        // guardamos idCaso para la nueva página
+                        sessionStorage.setItem("idCasoAbrir", casoActualizado.idCaso);
+
+                        // redirigimos a la página de trabajo del caso
+                        window.location.href = "../PaginasMecanicos/AbrirCaso.html";
+                    } catch (err) {
+                        alert(err.message);
+                    }
+                });
+            }
+
+            // Botón "Continuar Trabajando" (si quieres que haga algo parecido)
+            const btnContinuar = tarjeta.querySelector(".continuar");
+            if (btnContinuar) {
+                btnContinuar.dataset.id = caso.idCaso;
+                btnContinuar.addEventListener("click", () => {
+                    // igual que comenzar, abrimos la página de trabajo (en caso de reanudar)
+                    sessionStorage.setItem("idCasoAbrir", caso.idCaso);
+                    window.location.href = "../PaginasMecanicos/AbrirCaso.html";
+                });
+            }
+
         });
     }
 
-    // ===================
-    // 3. Info visual del estado
-    // ===================
+    // Informacion visual de los estados de los casos
     function obtenerEstado(estado) {
         switch (estado) {
             case "noEmpezado":
@@ -101,9 +151,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    // ===================
-    // 4. Filtrar por dropdown
-    // ===================
+    //Filtrar por dropdown
     filtro.addEventListener("change", () => {
         const value = filtro.value;
 

@@ -112,9 +112,14 @@ namespace Mecario_BackEnd.Servicios
 
 
         //Metodo para terminar un caso 
+        //Metodo para terminar un caso y calcular total
         public async Task<Casos> CerrarCasoAsync(CerrarCasoDTO dto)
         {
-            var caso = await _context.Casos.FirstOrDefaultAsync(c => c.idCaso == dto.idCaso);
+            var caso = await _context.Casos
+                .Include(c => c.ordenesServicio)  // Traer la orden asociada
+                .Include(c => c.detallesPieza)    // Traer piezas usadas
+                .FirstOrDefaultAsync(c => c.idCaso == dto.idCaso);
+
             if (caso == null)
                 throw new Exception("El caso especificado no existe.");
 
@@ -127,11 +132,27 @@ namespace Mecario_BackEnd.Servicios
             // Cambiar estado a terminado
             caso.estadoCaso = Casos.EstadoCaso.terminado;
 
+            // ======= Calcular total del caso =======
+            double subtotalOrden = caso.ordenesServicio?.costoInicial ?? 0;
+
+            double subtotalPiezas = caso.detallesPieza?.Sum(p => p.subtotal) ?? 0;
+
+            double totalHoras = caso.horasTrabajadas * 4.60;
+
+            double totalSinImpuesto = subtotalOrden + subtotalPiezas + totalHoras;
+
+            double totalConImpuesto = totalSinImpuesto * 1.07; // 7% impuesto
+
+            // Redondear a 2 decimales
+            caso.totalCaso = Math.Round(totalConImpuesto, 2);
+
+            // Guardar cambios
             _context.Casos.Update(caso);
             await _context.SaveChangesAsync();
 
             return caso;
         }
+
 
         // NUEVO: Obtener factura (totalCaso) de un caso por su ID
         public async Task<FacturaCasoDTO?> ObtenerFacturaCasoAsync(int idCaso)
@@ -311,5 +332,32 @@ namespace Mecario_BackEnd.Servicios
                 }
                 ).ToListAsync();
         }
+
+        //Metodo para obtener los servicios de un caso en especifico
+        public async Task<ServiciosDeCasoDTO> ObtenerServiciosDeCaso(int idCaso)
+        {
+            var caso = await _context.Casos
+                .Include(c => c.ordenesServicio)
+                    .ThenInclude(o => o.Servicios)
+                .FirstOrDefaultAsync(c => c.idCaso == idCaso);
+
+            if (caso == null)
+                return null;
+
+            return new ServiciosDeCasoDTO
+            {
+                idOrden = caso.idOrdenServicio,
+                diagnosticoInicial = caso.ordenesServicio.diagnosticoInicial,
+                servicios = caso.ordenesServicio.Servicios
+                    .Select(s => new ServiciosPorTipoDTO
+                    {
+                        idServicio = s.idServicio,
+                        servicio = s.servicio,
+                        precio = s.precio
+                    })
+                    .ToList()
+            };
+        }
+
     }
 }

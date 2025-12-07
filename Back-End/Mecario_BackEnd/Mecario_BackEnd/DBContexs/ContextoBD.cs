@@ -126,7 +126,7 @@ namespace Mecario_BackEnd.DBContexs
                 entity.HasKey(s => s.idServicio);
                 entity.Property(s => s.idServicio).ValueGeneratedOnAdd();
                 entity.Property(s => s.servicio).IsRequired();                                    //Que servicio es
-                entity.Property(s => s.tipoServicio).IsRequired().HasConversion<string>();        // Guarda enum como string
+                entity.Property(s => s.tipoServicio).IsRequired();                // Guarda enum como string
                 entity.Property(s => s.precio).IsRequired().HasColumnType("decimal(10,2)");
             });
 

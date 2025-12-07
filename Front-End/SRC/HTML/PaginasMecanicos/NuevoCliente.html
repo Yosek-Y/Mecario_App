@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mecario - Agregar Cliente</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- FUENTES GOOGLE -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS Propio -->
+    <link rel="stylesheet" href="../../CSS/EstilosMecanico/EstilosAgregarCliente.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="../../../ASSETS/IMAGENES/Logo_Blanco_Mecario.png" alt="Logo" class="logo-img">
+            <span class="brand-name">MECARIO</span>
+        </div>
+    </header>
+
+    <main class="page">
+        <!-- Panel central: formulario de cliente -->
+        <section class="panel" id="panelFormulario">
+            <h2>Agregar Nuevo Cliente</h2>
+
+            <div class="field">
+                <label for="nombreCliente">Nombre completo</label>
+                <input type="text" id="nombreCliente" placeholder="Ej: Juan Pérez">
+            </div>
+
+            <div class="field">
+                <label for="telefonoCliente">Teléfono</label>
+                <input type="text" id="telefonoCliente" placeholder="Ej: 6677-8899">
+            </div>
+
+            <div class="field">
+                <label for="correoCliente">Correo electrónico</label>
+                <input type="email" id="correoCliente" placeholder="Ej: correo@dominio.com">
+            </div>
+
+            <div class="field">
+                <label for="direccionCliente">Dirección</label>
+                <input type="text" id="direccionCliente" placeholder="Ej: Calle 123, Ciudad">
+            </div>
+
+            <div style="margin-top:12px; display:flex; gap:12px;">
+                <!-- Botón Agregar Cliente -->
+                <button id="btnAgregarCliente" class="btn-accion">Agregar Cliente</button>
+                <!-- Botón Cancelar -->
+                <button class="btn-cancelar" onclick="window.location.href='../PaginasMecanicos/CasosMecanico.html'">Cancelar</button>
+            </div>
+
+            <div id="mensajeResultado" style="margin-top:10px; font-size:0.95rem;"></div>
+        </section>
+    </main>
+    <!-- JS propio -->
+    <script src="../../JAVASCRIPT/ScriptsAPI/AgregarCliente.js"></script>
+</body>
+
+</html>

@@ -70,7 +70,7 @@ namespace Mecario_BackEnd.Controllers
             }
         }
 
-        //Protocolo HTTP Put para continuar
+        //Protocolo HTTP Put para cerrar caso
         // PUT: Api/Casos/CerrarCaso
         [HttpPut("CerrarCaso")]
         public async Task<IActionResult> CerrarCaso([FromBody] CerrarCasoDTO dto)
@@ -247,6 +247,19 @@ namespace Mecario_BackEnd.Controllers
             }
 
             return Ok(lista);
+        }
+
+        //Peticion Get para trae todos los servicios de un caso
+        // GET: Api/Casos/ServiciosDeCaso/{idCaso}
+        [HttpGet("ServiciosDeCaso/{idCaso}")]
+        public async Task<IActionResult> ObtenerServiciosDeCaso(int idCaso)
+        {
+            var resultado = await _service.ObtenerServiciosDeCaso(idCaso);
+
+            if (resultado == null)
+                return NotFound("Este caso no existe o no tiene servicios registrados.");
+
+            return Ok(resultado);
         }
     }
 }

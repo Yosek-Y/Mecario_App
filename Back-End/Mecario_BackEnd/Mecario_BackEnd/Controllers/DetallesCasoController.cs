@@ -33,5 +33,13 @@ namespace Mecario_BackEnd.Controladores
                 return BadRequest(new { mensaje = ex.Message });
             }
         }
+
+        // GET Api/DetallesCaso/{idCaso}
+        [HttpGet("{idCaso}")]
+        public async Task<IActionResult> ObtenerDetalles(int idCaso)
+        {
+            var detalles = await _servicio.ObtenerDetallesCasoAsync(idCaso);
+            return Ok(detalles);
+        }
     }
 }

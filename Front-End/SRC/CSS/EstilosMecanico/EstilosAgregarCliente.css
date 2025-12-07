@@ -1,0 +1,136 @@
+/* Variables globales */
+:root {
+    --color-primario: #FFC107;
+    --color-secundario: #000000;
+    --color-texto: #333;
+    --color-blanco: #ffffff;
+    --fuente-titulos: 'Montserrat', sans-serif;
+    --fuente-cuerpo: 'Roboto', sans-serif;
+}
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cuerpo general */
+body {
+    font-family: var(--fuente-cuerpo);
+    background-color: #f4f4f4;
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* Tipografía para títulos */
+h2 {
+    font-family: var(--fuente-titulos);
+    text-transform: uppercase;
+    font-weight: 800;
+    margin-bottom: 18px;
+}
+
+/* HEADER */
+header {
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    height: 100px;
+    width: auto;
+    border-radius: 5px;
+}
+
+.brand-name {
+    font-family: var(--fuente-titulos);
+    font-size: 1.9rem;
+    color: var(--color-primario);
+}
+
+/* Página con dos columnas (aunque aquí solo usamos 1) */
+.page {
+    margin: 24px 5%;
+}
+
+/* Panel central */
+.panel {
+    background: #fff;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    border-left: 6px solid var(--color-primario);
+}
+
+/* Campos del formulario */
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+}
+
+.field label {
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.field input {
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 0.95rem;
+}
+
+/* Botón principal */
+.btn-accion {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    background: var(--color-primario);
+    color: var(--color-secundario);
+    transition: background 0.3s;
+}
+
+.btn-accion:hover {
+    background: #e0a800;
+}
+
+/* Mensaje de resultado */
+#mensajeResultado {
+    font-size: 0.95rem;
+    color: #333;
+}
+
+/* Botón cancelar */
+.btn-cancelar {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    background: #ff3b3b;
+    /* rojo */
+    color: #fff;
+    transition: background 0.3s;
+}
+
+.btn-cancelar:hover {
+    background: #e02e2e;
+}

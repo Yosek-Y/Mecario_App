@@ -6,6 +6,5 @@
         public string diagnosticoInicial { get; set; }
         public double costoInicial { get; set; }
         public int idVehiculo { get; set; }
-
     }
 }

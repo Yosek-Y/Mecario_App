@@ -297,3 +297,41 @@ nav a.active {
 .btn-nuevo-caso:hover {
     background-color: var(--color-secundario);
 }
+
+.botones-acciones {
+    display: flex;
+    gap: 10px; /* Espacio entre botones */
+}
+
+.btn-nuevo-cliente {
+    background-color: #28a745; /* Verde */
+    color: white;
+    font-family: var(--fuente-titulos);
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-nuevo-cliente:hover {
+    background-color: #218838; /* Verde oscuro al hover */
+}
+
+/* Botón de nuevo vehículo */
+.btn-nuevo-vehiculo {
+    background-color: #007bff; /* Azul */
+    color: white;
+    font-family: var(--fuente-titulos);
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-nuevo-vehiculo:hover {
+    background-color: #0069d9; /* Azul más oscuro al hover */
+}
