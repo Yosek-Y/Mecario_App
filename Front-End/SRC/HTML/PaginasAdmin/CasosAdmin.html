@@ -73,168 +73,169 @@
 
     <main class="casos-admin-container">
 
-    <h1 class="titulo-principal">Gestión de Casos</h1>
+        <h1 class="titulo-principal">Gestión de Casos</h1>
 
-    <!-- 1. ASIGNAR -->
-    <section class="card-admin">
-        <h2>Asignar Caso</h2>
+        <!-- 1. ASIGNAR -->
+        <section class="card-admin">
+            <h2>Asignar Caso</h2>
 
-        <form id="formAsignarCaso" class="form-grid">
-            <div>
-                <label>ID Caso</label>
-                <input type="number" id="asignar_idCaso" required>
+            <form id="formAsignarCaso" class="form-grid">
+                <div>
+                    <label>ID Caso</label>
+                    <input type="number" id="asignar_idCaso" required>
+                </div>
+
+                <div>
+                    <label>ID Mecánico</label>
+                    <input type="number" id="asignar_idMecanico" required>
+                </div>
+
+                <button type="submit" class="btn-action">Asignar</button>
+            </form>
+
+            <p id="msgAsignarCaso" class="response-message"></p>
+        </section>
+
+        <!-- 2. TODOS LOS CASOS -->
+        <section class="card-admin">
+            <h2>Todos los Casos</h2>
+
+            <button id="btnVerTodos" class="btn-action mb-1">Cargar Casos</button>
+
+            <div class="tabla-scroll">
+                <table class="tabla" id="tablaTodosCasos">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                            <th>Horas</th>
+                            <th>Estado</th>
+                            <th>Total</th>
+                            <th>Mecánico</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. FILTRO POR ESTADO -->
+        <section class="card-admin">
+            <h2>Casos por Estado</h2>
+
+            <div class="form-grid small-grid">
+                <div>
+                    <label>Estado</label>
+                    <select id="filtroEstado">
+                        <option value="">Seleccione...</option>
+                        <option value="1">No Empezado</option>
+                        <option value="2">En Proceso</option>
+                        <option value="3">Terminado</option>
+                    </select>
+                </div>
+
+                <button id="btnFiltrarEstado" class="btn-action">Buscar</button>
             </div>
 
-            <div>
-                <label>ID Mecánico</label>
-                <input type="number" id="asignar_idMecanico" required>
+            <div class="tabla-scroll">
+                <table class="tabla" id="tablaCasosStatus">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                            <th>Horas</th>
+                            <th>Estado</th>
+                            <th>Total</th>
+                            <th>Mecánico</th>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 4. FACTURAS -->
+        <section class="card-admin">
+            <h2>Facturas</h2>
+
+            <button id="btnVerFacturas" class="btn-action mb-1">Cargar Facturas</button>
+
+            <div class="tabla-scroll">
+                <table class="tabla" id="tablaFacturas">
+                    <thead>
+                        <tr>
+                            <th>ID Caso</th>
+                            <th>Total</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                            <th>Horas</th>
+                            <th>Mecánico</th>
+                            <th>Nombre</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 5. FACTURA INDIVIDUAL -->
+        <section class="card-admin">
+            <h2>Factura Individual</h2>
+
+            <div class="form-grid small-grid">
+                <div>
+                    <label>ID Caso</label>
+                    <input type="number" id="buscarFactura_idCaso">
+                </div>
+
+                <button id="btnBuscarFactura" class="btn-action">Buscar</button>
             </div>
 
-            <button type="submit" class="btn-action">Asignar</button>
-        </form>
-
-        <p id="msgAsignarCaso" class="response-message"></p>
-    </section>
-
-    <!-- 2. TODOS LOS CASOS -->
-    <section class="card-admin">
-        <h2>Todos los Casos</h2>
-
-        <button id="btnVerTodos" class="btn-action mb-1">Cargar Casos</button>
-
-        <div class="tabla-scroll">
-            <table class="tabla" id="tablaTodosCasos">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Inicio</th>
-                        <th>Fin</th>
-                        <th>Horas</th>
-                        <th>Estado</th>
-                        <th>Total</th>
-                        <th>Mecánico</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- 3. FILTRO POR ESTADO -->
-    <section class="card-admin">
-        <h2>Casos por Estado</h2>
-
-        <div class="form-grid small-grid">
-            <div>
-                <label>Estado</label>
-                <select id="filtroEstado">
-                    <option value="">Seleccione...</option>
-                    <option value="1">No Empezado</option>
-                    <option value="2">En Proceso</option>
-                    <option value="3">Terminado</option>
-                </select>
+            <div class="tabla-scroll">
+                <table class="tabla" id="tablaFacturaIndividual">
+                    <thead>
+                        <tr>
+                            <th>ID Caso</th>
+                            <th>Total</th>
+                            <th>Inicio</th>
+                            <th>Fin</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
+        </section>
 
-            <button id="btnFiltrarEstado" class="btn-action">Buscar</button>
-        </div>
+        <!-- 6. SIN MECÁNICO -->
+        <section class="card-admin">
+            <h2>Casos Sin Mecánico</h2>
 
-        <div class="tabla-scroll">
-            <table class="tabla" id="tablaCasosStatus">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Inicio</th>
-                        <th>Fin</th>
-                        <th>Horas</th>
-                        <th>Estado</th>
-                        <th>Total</th>
-                        <th>Mecánico</th>
-                        <th>Nombre</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </section>
+            <button id="btnSinMecanico" class="btn-action mb-1">Ver Casos</button>
 
-    <!-- 4. FACTURAS -->
-    <section class="card-admin">
-        <h2>Facturas</h2>
-
-        <button id="btnVerFacturas" class="btn-action mb-1">Cargar Facturas</button>
-
-        <div class="tabla-scroll">
-            <table class="tabla" id="tablaFacturas">
-                <thead>
-                    <tr>
-                        <th>ID Caso</th>
-                        <th>Total</th>
-                        <th>Inicio</th>
-                        <th>Fin</th>
-                        <th>Horas</th>
-                        <th>Mecánico</th>
-                        <th>Nombre</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- 5. FACTURA INDIVIDUAL -->
-    <section class="card-admin">
-        <h2>Factura Individual</h2>
-
-        <div class="form-grid small-grid">
-            <div>
-                <label>ID Caso</label>
-                <input type="number" id="buscarFactura_idCaso">
+            <div class="tabla-scroll">
+                <table class="tabla" id="tablaSinMecanico">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Inicio</th>
+                            <th>Horas</th>
+                            <th>Estado</th>
+                            <th>Total</th>
+                            <th>ID Orden</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
+        </section>
 
-            <button id="btnBuscarFactura" class="btn-action">Buscar</button>
-        </div>
+    </main>
 
-        <div class="tabla-scroll">
-            <table class="tabla" id="tablaFacturaIndividual">
-                <thead>
-                    <tr>
-                        <th>ID Caso</th>
-                        <th>Total</th>
-                        <th>Inicio</th>
-                        <th>Fin</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </section>
-
-    <!-- 6. SIN MECÁNICO -->
-    <section class="card-admin">
-        <h2>Casos Sin Mecánico</h2>
-
-        <button id="btnSinMecanico" class="btn-action mb-1">Ver Casos</button>
-
-        <div class="tabla-scroll">
-            <table class="tabla" id="tablaSinMecanico">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Inicio</th>
-                        <th>Horas</th>
-                        <th>Estado</th>
-                        <th>Total</th>
-                        <th>ID Orden</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-    </section>
-
-</main>
-
-<script src="../../JAVASCRIPT/ScriptsAPI/CasosAdmin.js"></script>
+    <script src="../../JAVASCRIPT/ScriptsAPI/CasosAdmin.js"></script>
 
 </body>
+
 </html>

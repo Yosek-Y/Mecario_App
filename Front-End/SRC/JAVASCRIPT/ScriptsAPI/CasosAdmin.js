@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // ============================================
     async function cargarCasos() {
         try {
-            const response = await fetch(`https://localhost:7266/api/Casos/Mecanico/${idMecanico}`);
+            const response = await fetch(`https://localhost:7292/api/Casos/Mecanico/${idMecanico}`);
 
             if (!response.ok) throw new Error("Error al obtener los casos");
 

@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // ===================
     async function cargarClientes() {
         try {
-            const response = await fetch("https://localhost:7082/api/Clientes");
+            const response = await fetch("https://localhost:7292/api/Clientes");
 
             if (!response.ok) throw new Error("Error al obtener los clientes");
 
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     async function editarCliente(id) {
 
         try {
-            const response = await fetch(`https://localhost:7082/api/Clientes/${id}`);
+            const response = await fetch(`https://localhost:7292/api/Clientes/${id}`);
 
             if (!response.ok) throw new Error("No se pudo obtener el cliente");
 
@@ -120,7 +120,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
             // ACTUALIZAR
             if (id) {
-                response = await fetch(`https://localhost:7082/api/Clientes/${id}`, {
+                response = await fetch(`https://localhost:7292/api/Clientes/${id}`, {
                     method: "PUT",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(datos)
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
             // CREAR
             else {
-                response = await fetch("https://localhost:7082/api/Clientes", {
+                response = await fetch("https://localhost:7292/api/Clientes", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(datos)
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         if (!confirm("¿Seguro que desea eliminar a este cliente?")) return;
 
         try {
-            const response = await fetch(`https://localhost:7082/api/Clientes/${id}`, {
+            const response = await fetch(`https://localhost:7292/api/Clientes/${id}`, {
                 method: "DELETE"
             });
 

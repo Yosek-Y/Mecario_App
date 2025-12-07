@@ -1,11 +1,15 @@
 /*Variables a nivel del CSS*/
 :root {
-    --color-primario: #FFC107; /* Amarillo/Dorado tomado del logo */
-    --color-secundario: #000000; /* Negro profundo */
+    --color-primario: #FFC107;
+    /* Amarillo/Dorado tomado del logo */
+    --color-secundario: #000000;
+    /* Negro profundo */
     --color-texto: #333;
     --color-blanco: #ffffff;
-    --fuente-titulos: 'Montserrat', sans-serif; /* Fuente para Títulos */
-    --fuente-cuerpo: 'Roboto', sans-serif; /* Fuente para el cuerpo */
+    --fuente-titulos: 'Montserrat', sans-serif;
+    /* Fuente para Títulos */
+    --fuente-cuerpo: 'Roboto', sans-serif;
+    /* Fuente para el cuerpo */
 }
 
 /*Reseteo basico*/
@@ -15,6 +19,7 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 /* Configura la fuente del documento, color de fondo, color
 del texto y la altura de línea para mejorar la legibilidad. */
 body {
@@ -25,9 +30,13 @@ body {
 }
 
 /*Tipografia*/
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--fuente-titulos);
-    text-transform: uppercase; /* Texto en mayúsculas */
+    text-transform: uppercase;
+    /* Texto en mayúsculas */
     font-weight: 800;
 }
 
@@ -35,12 +44,14 @@ h1, h2, h3, h4 {
 header {
     background-color: var(--color-secundario);
     color: var(--color-blanco);
-    padding: 1rem 5%;   /*Padding para espaciado interno*/
+    padding: 1rem 5%;
+    /*Padding para espaciado interno*/
     display: flex;
     /* Distribuye el espacio: Logo a la izquierda, Iconos/Login a la derecha */
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
-    position: sticky; /* Header pegado arriba */
+    position: sticky;
+    /* Header pegado arriba */
     top: 0;
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -48,14 +59,16 @@ header {
 
 /* Contenedor del Logo */
 .logo-container {
-    display: flex;  /*Alinea horizontalmente la imagen del logo y el nombre de la marca*/
+    display: flex;
+    /*Alinea horizontalmente la imagen del logo y el nombre de la marca*/
     align-items: center;
     gap: 15px;
 }
 
 .logo-img {
     height: 100px;
-    width: auto; /*Mantiene proporción automáticamente*/
+    width: auto;
+    /*Mantiene proporción automáticamente*/
     border-radius: 5px;
 }
 
@@ -72,7 +85,8 @@ nav {
 }
 
 nav ul {
-    display: flex; /*Se muestra en una sola fila usando flexbox*/
+    display: flex;
+    /*Se muestra en una sola fila usando flexbox*/
     list-style: none;
     gap: 20px;
 }
@@ -81,24 +95,27 @@ nav a {
     color: var(--color-blanco);
     text-decoration: none;
     font-weight: 500;
-    transition: color 0.3s; /*Transición suave al pasar el mouse*/
+    transition: color 0.3s;
+    /*Transición suave al pasar el mouse*/
     padding: 20px 15px;
     display: block;
     font-size: 1.5rem;
 }
 
 nav a:hover {
-    color: var(--color-primario); /* Cambia a amarillo al pasar el mouse */
+    color: var(--color-primario);
+    /* Cambia a amarillo al pasar el mouse */
 }
 
-nav ul { 
-    display: flex; /* Se muestra en una sola fila usando flexbox */
-    list-style: none; 
+nav ul {
+    display: flex;
+    /* Se muestra en una sola fila usando flexbox */
+    list-style: none;
     gap: 20px;
 }
 
 /* Estilos para los enlaces de navegación */
-nav a { 
+nav a {
     color: var(--color-blanco);
     text-decoration: none;
     font-weight: 500;
@@ -115,9 +132,12 @@ nav a:hover {
 
 /* Estilo para el enlace activo */
 nav a.active {
-    color: var(--color-primario);   /* Amarillo cuando está activa la sección */
-    font-weight: bold;              /* Negrita */
-    border-bottom: 3px solid var(--color-primario); /* Subrayado grueso */
+    color: var(--color-primario);
+    /* Amarillo cuando está activa la sección */
+    font-weight: bold;
+    /* Negrita */
+    border-bottom: 3px solid var(--color-primario);
+    /* Subrayado grueso */
 }
 
 /* Banner de Iconos (Búsqueda, Redes, Login) */
@@ -153,7 +173,8 @@ nav a.active {
     border: none;
     border-radius: 5px;
     font-weight: bold;
-    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
+    cursor: pointer;
+    /* Cambia el cursor al pasar sobre el botón */
     font-family: var(--fuente-titulos);
     font-size: 1.2rem;
     /* Aumentar tamaño de fuente */
@@ -164,56 +185,14 @@ nav a.active {
 .btn-logout:hover {
     background-color: #e0a800;
 }
-/* --- BARRA LATERAL ADMIN --- */
-.sidebar-admin {
-    position: fixed;        /* NO se mueve con scroll */
-    top: 100px;             /* Debajo del header (ajustable si tu header cambia de alto) */
-    left: 0;
-    width: 260px;
-    height: 100vh;
-    background-color: #111; /* Negro para diferenciar */
-    padding-top: 30px;
-    box-shadow: 4px 0 6px rgba(0, 0, 0, 0.2);
-    overflow-y: auto;       /* Por si agregas más items */
-    z-index: 999;           /* Debajo del header (que tiene 1000) */
-}
 
-.sidebar-admin ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.sidebar-admin ul li {
-    margin-bottom: 15px;
-}
-
-.sidebar-admin ul li a {
-    display: block;
-    padding: 15px 25px;
-    color: var(--color-blanco);
-    font-size: 1.2rem;
-    text-decoration: none;
-    transition: background 0.3s, color 0.3s;
-}
-
-.sidebar-admin ul li a:hover {
-    background-color: var(--color-primario);
-    color: var(--color-secundario);
-    font-weight: bold;
-}
-
-/* Para que el contenido principal no quede debajo de la barra */
-main, section {
-    margin-left: 270px; 
-}
 /* Tarjetas admin */
 .card-admin {
     background: white;
     padding: 25px;
     margin: 25px 40px;
     border-radius: 10px;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.10);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.10);
 }
 
 /* Título */
@@ -283,4 +262,3 @@ main, section {
 .tabla-scroll {
     overflow-x: auto;
 }
-
