@@ -57,7 +57,12 @@ namespace Mecario_BackEnd.Controllers
             try
             {
                 var caso = await _service.ContinuarCasoAsync(dto);
-                return Ok(caso);
+
+                return Ok(new
+                {
+                    mensaje = "Caso actualizado correctamente",
+                    data = caso
+                });
             }
             catch (Exception ex)
             {

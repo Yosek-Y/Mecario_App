@@ -90,18 +90,26 @@ namespace Mecario_BackEnd.Servicios
         //Metodo para cuando un caso se continuara despues
         public async Task<Casos> ContinuarCasoAsync(ContinuarCasoDTO dto)
         {
-            var caso = await _context.Casos.FirstOrDefaultAsync(c => c.idCaso == dto.idCaso);
+            var caso = await _context.Casos
+                .FirstOrDefaultAsync(c => c.idCaso == dto.idCaso);
+
             if (caso == null)
                 throw new Exception("El caso especificado no existe.");
 
-            // Sumamos las horas recibidas a las existentes
+            // Sumamos las nuevas horas
             caso.horasTrabajadas += dto.horasTrabajadas;
 
+            // Cambiar el estado a EN PROCESO si estaba noEmpezado
+            if (caso.estadoCaso == Casos.EstadoCaso.noEmpezado)
+                caso.estadoCaso = Casos.EstadoCaso.enProceso;
+
+            // Guardar cambios
             _context.Casos.Update(caso);
             await _context.SaveChangesAsync();
 
             return caso;
         }
+
 
         //Metodo para terminar un caso 
         public async Task<Casos> CerrarCasoAsync(CerrarCasoDTO dto)

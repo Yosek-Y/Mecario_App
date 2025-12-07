@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecario - Administrador - Piezas</title>
+    <!-- 
+        ICONOS (FONT AWESOME)
+        - Se importa la librería de iconos para usar el ícono de búsqueda
+          y las redes sociales en el header.
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 
+        TIPOGRAFÍAS (GOOGLE FONTS)
+        - Se cargan dos familias de fuentes:
+            * Montserrat: Usada para los titulos
+            * Roboto: Usada en el contenido del sitio
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- Archivo CSS-->
+    <link rel="stylesheet" href="../../CSS/EstilosAdmin/EstilosPiezasAdmin.css">
+</head>
+
+<body>
+    <!-- HEADER: Contiene Logo, Navegación y Banner superior -->
+    <header>
+        <!-- 
+        Parte Izquierda: Logo y Nombre del proyecto
+        - Muestra la imagen del logo y el nombre del proyecto Mecario
+        -->
+        <div class="logo-container">
+            <img src="../../../ASSETS/IMAGENES/Logo_Blanco_Mecario.png" alt="Logo Mecario" class="logo-img">
+            <span class="brand-name">MECARIO</span>
+        </div>
+        <!-- 
+        Parte central: Barra de navegación / nav
+        - Contiene los enlaces del menú principal.
+        - Cada <a> apunta a secciones internas de la página mediante IDs.
+        - La sección "Nosotros" lleva a una página externa.
+        -->
+        <nav>
+            <ul>
+                <li><a href="../PaginasAdmin/CasosAdmin.html">Casos</a></li>
+                <li><a href="../HTML/ClientesAdmin.html">Clientes</a></li>
+                <li><a class="active" href="../HTML/PiezasAdmin.html">Piezas</a></li>
+                <li><a href="../PaginasAdmin/MecanicosAdmin.html">Mecánicos</a></li>
+            </ul>
+        </nav>
+
+        <!-- 
+        Parte Derecha: Íconos y Botón de Login
+        - Incluye el ícono de búsqueda con enlace directo a Google.com
+        - Contiene íconos de redes sociales
+        - Incluye el botón "Login" que abre el display de autenticación mediante JS
+        -->
+        <div class="top-banner-icons">
+            <!-- Ícono de Búsqueda -->
+            <a href="https://www.google.com" target="_blank" class="icon-link" title="Buscar en Google">
+                <i class="fas fa-search"></i></a>
+            <!-- Iconos de Redes Sociales -->
+            <a href="#" class="icon-link"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="icon-link"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="icon-link"><i class="fab fa-linkedin-in"></i></a>
+            <!-- Botón de Login -->
+            <button class="btn-logout" onclick="window.location.href='../HTML/Home.html'">Logout</button>
+        </div>
+    </header>
+</body>
+</html>

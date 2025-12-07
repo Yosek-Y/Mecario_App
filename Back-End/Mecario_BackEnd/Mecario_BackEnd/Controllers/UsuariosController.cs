@@ -62,7 +62,7 @@ namespace Mecario_BackEnd.Controllers
 
         //Protocolo HTTP Post para el inicio de sesion
         //POST: Api/Usuarios/Iniciar-Sesion
-        [HttpPost("Iniciar-Sesion")]
+        [HttpPost("IniciarSesion")]
         public async Task<IActionResult> IniciarSesion([FromBody] InicioSesionDTO dto)
         {
             var resultado = await _service.IniciarSesion(dto);

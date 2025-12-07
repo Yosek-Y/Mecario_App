@@ -88,13 +88,14 @@ namespace Mecario_BackEnd.Servicios
             var user = await _context.Usuarios
                 .FirstOrDefaultAsync(u => u.userName == dto.usuario);
 
-            if (user == null)
+            if (user == null || user.userPassword != dto.contrasena)
                 return "El usuario o contraseña es incorrecta";
 
-            if (user.userPassword != dto.contrasena)
-                return "El usuario o contraseña es incorrecta";
-
-            return new { idUsuario = user.idUsuario };
+            return new InicioSesionRespuestaDTO
+            {
+                idUsuario = user.idUsuario,
+                tipoUsuario = user.tipoUsuario.ToString()
+            };
         }
     }
 }

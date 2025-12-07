@@ -1,0 +1,202 @@
+/* ==========================================================================
+  VARIABLES Y ESTILOS GLOBALES
+  Definición de colores y tipografía para consistencia de marca Mecario.
+  ========================================================================== 
+*/
+
+:root {
+    --color-primario: #FFC107;
+    /* Amarillo/Dorado - Destacado */
+    --color-secundario: #000000;
+    /* Negro - Fondo principal */
+    --color-fondo-claro: #ffffff;
+    /* Fondo del body */
+    --color-texto: #333;
+    /* Color de texto estándar */
+    --color-blanco: #ffffff;
+    /* Color para fondos de tarjeta */
+    --fuente-titulos: 'Montserrat', sans-serif;
+    --fuente-cuerpo: 'Roboto', sans-serif;
+}
+
+/* Reset y estilos base del cuerpo de la página */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-cuerpo);
+    color: var(--color-texto);
+    /* Fondo con imagen */
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(26, 26, 26, 0.6) 100%), url('../../ASSETS/IMAGENES/FondoLogin.jpg') center/cover no-repeat;
+    min-height: 100vh;
+    display: flex;
+    /* Para centrar el contenido vertical y horizontalmente */
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Estilos para Títulos (coherencia con el Home) */
+h1 {
+    font-family: var(--fuente-titulos);
+    font-weight: 800;
+}
+
+/* ==========================================================================
+  ESTILOS DEL CONTENEDOR DE LOGIN
+  Centrado y diseño de la tarjeta.
+  ========================================================================== 
+*/
+
+.login-container {
+    width: 100%;
+    max-width: 450px;
+    /* Ancho máximo estándar para un formulario de login */
+}
+
+.login-card {
+    background-color: var(--color-blanco);
+    padding: 40px;
+    border-radius: 12px;
+    /* Esquinas redondeadas */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    /* Sombra marcada para efecto 3D/moderno */
+    transition: transform 0.3s ease;
+    border-top: 5px solid var(--color-primario);
+    /* Línea de color primario en la parte superior */
+}
+
+/* ==========================================================================
+  ESTILOS DEL ENCABEZADO
+  Logo y texto descriptivo.
+  ========================================================================== 
+*/
+
+.login-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo-img {
+    height: 70px;
+    /* Tamaño del logo */
+    margin-bottom: 10px;
+    border-radius: 8px;
+}
+
+.login-title {
+    color: var(--color-secundario);
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+}
+
+.login-subtitle {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* ==========================================================================
+  ESTILOS DEL FORMULARIO Y CONTROLES
+  Diseño de inputs y labels.
+  ========================================================================== 
+*/
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--color-texto);
+    font-size: 0.95rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Efecto de foco para los inputs */
+.form-group input:focus {
+    border-color: var(--color-primario);
+    box-shadow: 0 0 5px rgba(255, 193, 7, 0.5);
+    /* Sombra sutil del color primario */
+    outline: none;
+    /* Quita el borde de foco por defecto del navegador */
+}
+
+/* Contenedor del campo de contraseña para posicionar el "ojito" */
+.password-wrapper {
+    position: relative;
+}
+
+/* Icono de Toggle de Contraseña */
+.toggle-password {
+    position: absolute;
+    top: 50%;
+    /* Centra verticalmente */
+    right: 15px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #999;
+    transition: color 0.2s;
+}
+
+.toggle-password:hover {
+    color: var(--color-primario);
+}
+
+/* ==========================================================================
+  ESTILOS DEL BOTÓN DE INGRESAR
+  Botón principal con estilo de marca.
+  ========================================================================== 
+*/
+
+.btn-ingresar {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+/* Efecto hover y click (activo) del botón */
+.btn-ingresar:hover {
+    background-color: #e0a800;
+    /* Tono de amarillo ligeramente más oscuro */
+}
+
+.btn-ingresar:active {
+    transform: translateY(1px);
+    /* Efecto de hundimiento al hacer click */
+}
+
+/*Estilos responsivos para pantallas pequeñas */
+
+@media (max-width: 500px) {
+    .login-card {
+        padding: 30px 20px;
+        /* Reduce el padding en pantallas pequeñas */
+        margin: 0 10px;
+    }
+
+    .login-title {
+        font-size: 1.5rem;
+    }
+}
