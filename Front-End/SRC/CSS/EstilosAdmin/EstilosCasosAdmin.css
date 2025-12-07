@@ -207,3 +207,80 @@ nav a.active {
 main, section {
     margin-left: 270px; 
 }
+/* Tarjetas admin */
+.card-admin {
+    background: white;
+    padding: 25px;
+    margin: 25px 40px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.10);
+}
+
+/* Título */
+.card-admin h2 {
+    margin-bottom: 15px;
+    color: var(--color-secundario);
+}
+
+/* Grids */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.small-grid {
+    grid-template-columns: 1fr auto;
+}
+
+/* Inputs */
+.card-admin input,
+.card-admin select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+/* Botón */
+.btn-action {
+    background: var(--color-secundario);
+    color: var(--color-primario);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-family: var(--fuente-titulos);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-action:hover {
+    background: var(--color-primario);
+    color: var(--color-secundario);
+}
+
+/* Tablas */
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.tabla th {
+    background: var(--color-secundario);
+    color: var(--color-primario);
+    padding: 10px;
+}
+
+.tabla td {
+    padding: 10px;
+    background: #fafafa;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Scroll horizontal elegante */
+.tabla-scroll {
+    overflow-x: auto;
+}
+

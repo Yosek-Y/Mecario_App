@@ -164,3 +164,106 @@ nav a.active {
 .btn-logout:hover {
     background-color: #e0a800;
 }
+
+/* CONTENEDOR GENERAL */
+.clientes-admin-container {
+    padding: 40px 10%;
+}
+
+/* TÍTULO PRINCIPAL */
+.titulo-principal {
+    font-family: var(--fuente-titulos);
+    font-size: 2.2rem;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--color-secundario);
+}
+
+/* TARJETAS (SECCIONES) */
+.card {
+    background: var(--color-blanco);
+    padding: 30px;
+    margin-bottom: 40px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    border-left: 6px solid var(--color-primario);
+}
+
+.card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    color: var(--color-secundario);
+}
+
+/* FORMULARIOS */
+.form-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #d1d1d1;
+    font-size: 1rem;
+}
+
+.btn-action {
+    margin-top: 20px;
+    background-color: var(--color-secundario);
+    color: var(--color-blanco);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    font-family: var(--fuente-titulos);
+    transition: 0.3s;
+}
+
+.btn-action:hover {
+    background-color: var(--color-primario);
+    color: var(--color-secundario);
+}
+
+/* TABLAS */
+.tabla {
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+    background: var(--color-blanco);
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.tabla th {
+    background: var(--color-secundario);
+    color: var(--color-blanco);
+    padding: 12px;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.tabla td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+}
+
+.tabla tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* MENSAJES */
+.response-message {
+    margin-top: 15px;
+    font-weight: bold;
+    color: var(--color-secundario);
+}
