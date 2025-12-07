@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mecario - Administrador - Mecanicos</title>
+    <title>Mecario - Administrador - Mecánicos</title>
     <!-- 
         ICONOS (FONT AWESOME)
-        - Se importa la librería de iconos para usar el ícono de búsqueda
-          y las redes sociales en el header.
+        - Se importa la librería de iconos para usar íconos como búsqueda y redes sociales.
     -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- 
         TIPOGRAFÍAS (GOOGLE FONTS)
         - Se cargan dos familias de fuentes:
-            * Montserrat: Usada para los titulos
+            * Montserrat: Usada para títulos
             * Roboto: Usada en el contenido del sitio
     -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,27 +22,105 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet">
-    <!-- Archivo CSS-->
+
+    <!-- 
+        ARCHIVO CSS
+        - Se enlaza el archivo de estilos específico para la página de administración de mecánicos.
+    -->
     <link rel="stylesheet" href="../../CSS/EstilosAdmin/EstilosMecanicosAdmin.css">
+
+    <style>
+        /* --- ESTILOS EXTRA PARA ELEGANCIA --- */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 2rem;
+        }
+
+        form label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        form input,
+        form button,
+        form select {
+            padding: 0.6rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 0.95rem;
+        }
+
+        form button {
+            grid-column: span 2;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Contenedores de listas */
+        #lista-mecanicos,
+        #lista-casos-mecanico {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f9fafc;
+            border: 1px dashed #ccc;
+            border-radius: 5px;
+            min-height: 50px;
+        }
+    </style>
 </head>
 
 <body>
     <!-- HEADER: Contiene Logo, Navegación y Banner superior -->
     <header>
-        <!-- 
-        Parte Izquierda: Logo y Nombre del proyecto
-        - Muestra la imagen del logo y el nombre del proyecto Mecario
-        -->
+        <!-- Parte Izquierda: Logo y Nombre del proyecto -->
         <div class="logo-container">
             <img src="../../../ASSETS/IMAGENES/Logo_Blanco_Mecario.png" alt="Logo Mecario" class="logo-img">
             <span class="brand-name">MECARIO</span>
         </div>
-        <!-- 
-        Parte central: Barra de navegación / nav
-        - Contiene los enlaces del menú principal.
-        - Cada <a> apunta a secciones internas de la página mediante IDs.
-        - La sección "Nosotros" lleva a una página externa.
-        -->
+
+        <!-- Parte central: Barra de navegación -->
         <nav>
             <ul>
                 <li><a href="../PaginasAdmin/CasosAdmin.html">Casos</a></li>
@@ -52,12 +130,7 @@
             </ul>
         </nav>
 
-        <!-- 
-        Parte Derecha: Íconos y Botón de Login
-        - Incluye el ícono de búsqueda con enlace directo a Google.com
-        - Contiene íconos de redes sociales
-        - Incluye el botón "Login" que abre el display de autenticación mediante JS
-        -->
+        <!-- Parte Derecha: Íconos y Botón de Login -->
         <div class="top-banner-icons">
             <!-- Ícono de Búsqueda -->
             <a href="https://www.google.com" target="_blank" class="icon-link" title="Buscar en Google">
@@ -66,9 +139,81 @@
             <a href="#" class="icon-link"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="icon-link"><i class="fab fa-instagram"></i></a>
             <a href="#" class="icon-link"><i class="fab fa-linkedin-in"></i></a>
-            <!-- Botón de Login -->
+            <!-- Botón de Logout -->
             <button class="btn-logout" onclick="window.location.href='../HTML/Home.html'">Logout</button>
         </div>
     </header>
+
+    <!-- MAIN: Contenido principal de la página -->
+    <main class="mecanicos-admin">
+        <h1>Gestión de Mecánicos</h1>
+
+        <!-- 1. AGREGAR MECÁNICO -->
+        <!-- Formulario para registrar un nuevo mecánico en el sistema -->
+        <section id="agregar-mecanico">
+            <h2>Agregar Mecánico</h2>
+            <form id="form-agregar-mecanico">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="especialidad">Especialidad:</label>
+                <input type="text" id="especialidad" name="especialidad" required>
+
+                <label for="telefono">Teléfono:</label>
+                <input type="text" id="telefono" name="telefono" required>
+
+                <label for="correo">Correo:</label>
+                <input type="email" id="correo" name="correo" required>
+
+                <button type="submit">Agregar</button>
+            </form>
+        </section>
+
+        <!-- 2. VER TODOS LOS MECÁNICOS -->
+        <!-- Sección para mostrar todos los mecánicos registrados -->
+        <section id="ver-mecanicos">
+            <h2>Ver todos los mecánicos</h2>
+            <div id="lista-mecanicos">
+                <!-- Aquí se renderiza la lista con JS usando el DTO -->
+            </div>
+        </section>
+
+        <!-- 3. ASIGNAR CASO A UN MECÁNICO -->
+        <!-- Formulario para asignar un caso específico a un mecánico -->
+        <section id="asignar-caso">
+            <h2>Asignar Caso a Mecánico</h2>
+            <form id="form-asignar-caso">
+                <label for="mecanico-id">ID de Mecánico:</label>
+                <input type="text" id="mecanico-id" name="mecanicoId" required>
+
+                <label for="caso-id">ID de Caso:</label>
+                <input type="text" id="caso-id" name="casoId" required>
+
+                <button type="submit">Asignar</button>
+            </form>
+        </section>
+
+        <!-- 4. VER TODOS LOS CASOS DE UN MECÁNICO SEGÚN STATUS -->
+        <!-- Sección para filtrar y mostrar casos de un mecánico según su estado -->
+        <section id="ver-casos-mecanico">
+            <h2>Ver Casos de Mecánico por Status</h2>
+            <form id="form-ver-casos-mecanico">
+                <label for="mecanico-id-status">ID de Mecánico:</label>
+                <input type="text" id="mecanico-id-status" name="mecanicoId" required>
+
+                <label for="status">Status:</label>
+                <select id="status" name="status" required>
+                    <option value="pendiente">Pendiente</option>
+                    <option value="en-progreso">En Progreso</option>
+                    <option value="finalizado">Finalizado</option>
+                </select>
+
+                <button type="submit">Buscar</button>
+            </form>
+            <div id="lista-casos-mecanico">
+                <!-- Aquí se renderiza la lista filtrada con JS -->
+            </div>
+        </section>
+    </main>
 </body>
 </html>
