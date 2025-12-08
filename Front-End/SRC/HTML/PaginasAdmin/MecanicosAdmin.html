@@ -12,7 +12,9 @@
     <!-- Fuentes para títulos y texto -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
 
     <!-- Archivo de estilos del módulo -->
     <link rel="stylesheet" href="../../CSS/EstilosAdmin/EstilosMecanicosAdmin.css">
@@ -20,10 +22,7 @@
 
 <body>
 
-    <!-- ============================================================
-         HEADER SUPERIOR
-         Contiene el logo, navegación entre módulos y accesos rápidos
-    =============================================================== -->
+    <!-- HEADER SUPERIOR: Contiene el logo, navegación entre módulos y accesos rápidos-->
     <header>
         <div class="logo-container">
             <img src="../../../ASSETS/IMAGENES/Logo_Blanco_Mecario.png" alt="Logo Mecario" class="logo-img">
@@ -59,9 +58,7 @@
     </header>
 
 
-    <!-- ============================================================
-         CONTENEDOR PRINCIPAL DEL MÓDULO DE MECÁNICOS
-    =============================================================== -->
+    <!-- CONTENEDOR PRINCIPAL DEL MÓDULO DE MECÁNICOS-->
     <div class="container">
 
         <h1>Módulo de Mecánicos</h1>
@@ -70,18 +67,15 @@
         <div class="menu">
             <a href="#agregar" class="menu-btn">Agregar Mecánico</a>
             <a href="#ver" class="menu-btn">Ver Mecánicos</a>
-            <a href="#asignar" class="menu-btn">Asignar Caso</a>
             <a href="#casos" class="menu-btn">Casos por Status</a>
         </div>
 
-        <!-- ============================================================
-             SECCIÓN DE REGISTRO DE UN MECÁNICO
-        =============================================================== -->
+        <!-- SECCIÓN DE REGISTRO DE UN MECÁNICO-->
         <section id="agregar" class="section hidden">
             <h2>Registrar Nuevo Mecánico</h2>
 
             <!-- Formulario de registro -->
-            <form method="post" class="formulario">
+            <form class="formulario">
 
                 <label for="Nombre_Mec">Nombre Completo</label>
                 <input type="text" id="Nombre_Mec" name="Nombre_Mec" required>
@@ -96,15 +90,13 @@
                 <input type="text" id="Usuario_Mec" name="Usuario_Mec" required>
 
                 <label for="Contraseña_Mec">Contraseña</label>
-                <input type="password" id="Contraseña_Mec" name="Contraseña_Mec" required>
+                <input type="text" id="Contraseña_Mec" name="Contraseña_Mec" required>
 
                 <button type="submit" class="btn">Registrar</button>
             </form>
         </section>
 
-        <!-- ============================================================
-             LISTA DE MECÁNICOS
-        =============================================================== -->
+        <!-- LISTA DE MECÁNICOS-->
         <section id="ver" class="section hidden">
             <h2>Lista de Mecánicos</h2>
 
@@ -124,29 +116,7 @@
             </table>
         </section>
 
-        <!-- ============================================================
-             ASIGNAR CASO A UN MECÁNICO
-        =============================================================== -->
-        <section id="asignar" class="section hidden">
-            <h2>Asignar Caso a Mecánico</h2>
-
-            <form class="formulario" method="post">
-
-                <label for="Id_Mecanico">Seleccione Mecánico</label>
-                <select id="Id_Mecanico" name="Id_Mecanico" required>
-                    <!-- Backend completa esta lista -->
-                </select>
-
-                <label for="Id_Caso">ID del Caso</label>
-                <input type="number" id="Id_Caso" name="Id_Caso" required>
-
-                <button class="btn" type="submit">Asignar Caso</button>
-            </form>
-        </section>
-
-        <!-- ============================================================
-             VER CASOS POR STATUS
-        =============================================================== -->
+        <!-- VER CASOS POR STATUS-->
         <section id="casos" class="section hidden">
             <h2>Casos por Status</h2>
 
@@ -159,9 +129,10 @@
 
                 <label for="Status_Caso">Estado del Caso</label>
                 <select id="Status_Caso" name="Status_Caso">
-                    <option>Pendiente</option>
-                    <option>En Proceso</option>
-                    <option>Finalizado</option>
+                    <option>Todos</option>
+                    <option>noEmpezado</option>
+                    <option>enProceso</option>
+                    <option>terminado</option>
                 </select>
 
                 <button type="button" class="btn">Buscar</button>
@@ -182,42 +153,8 @@
 
     </div>
 
+    <script src="../../JAVASCRIPT/OtrosScripts/MecanicosAdmin.js"></script>
+    <script src="../../JAVASCRIPT/ScriptsAPI/PeticionesMecanicoAdmin.js"></script>
 </body>
 
 </html>
-
-<!-- ============================================================
-     SCRIPT QUE HACE FUNCIONAR TODO EL MENÚ INTERNO
-     Se encarga de mostrar las secciones, ocultar las demás,
-     y hacer scroll suave a la sección seleccionada.
-================================================================ -->
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-
-    // Selecciono todos los botones del menú interno
-    const botones = document.querySelectorAll(".menu-btn");
-
-    // Selecciono todas las secciones del módulo
-    const secciones = document.querySelectorAll(".section");
-
-    // Recorro cada botón del menú
-    botones.forEach(boton => {
-        boton.addEventListener("click", (e) => {
-            e.preventDefault(); // Evita el salto brusco del HTML
-
-            // Obtiene el id de la sección a la que debe ir (#agregar, #ver...)
-            let target = boton.getAttribute("href");
-            let seccion = document.querySelector(target);
-
-            // Oculto todas las secciones
-            secciones.forEach(s => s.classList.add("hidden"));
-
-            // Muestro solo la sección seleccionada
-            seccion.classList.remove("hidden");
-
-            // Scroll suave hasta esa sección
-            seccion.scrollIntoView({ behavior: "smooth" });
-        });
-    });
-});
-</script>

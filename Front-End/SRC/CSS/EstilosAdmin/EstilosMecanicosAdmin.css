@@ -3,12 +3,17 @@
    Se definen variables globales para colores y fuentes
 ============================================================ */
 :root {
-    --color-primario: #FFC107;      /* Amarillo/dorado del logo */
-    --color-secundario: #000000;    /* Negro profundo */
-    --color-texto: #333;            /* Color estándar del texto */
+    --color-primario: #FFC107;
+    /* Amarillo/dorado del logo */
+    --color-secundario: #000000;
+    /* Negro profundo */
+    --color-texto: #333;
+    /* Color estándar del texto */
     --color-blanco: #ffffff;
-    --fuente-titulos: 'Montserrat', sans-serif; /* Fuente fuerte para títulos */
-    --fuente-cuerpo: 'Roboto', sans-serif;       /* Fuente para textos */
+    --fuente-titulos: 'Montserrat', sans-serif;
+    /* Fuente fuerte para títulos */
+    --fuente-cuerpo: 'Roboto', sans-serif;
+    /* Fuente para textos */
 }
 
 /* ============================================================
@@ -17,21 +22,28 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; /* Evita que padding aumente el tamaño del elemento */
+    box-sizing: border-box;
+    /* Evita que padding aumente el tamaño del elemento */
 }
 
 /* Estilos base del body */
 body {
     font-family: var(--fuente-cuerpo);
-    background-color: #f4f4f4;   /* Gris claro de fondo */
+    background-color: #f4f4f4;
+    /* Gris claro de fondo */
     color: var(--color-texto);
-    line-height: 1.6;            /* Mejora la lectura */
+    line-height: 1.6;
+    /* Mejora la lectura */
 }
 
 /* Títulos generales */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--fuente-titulos);
-    text-transform: uppercase;   /* Estilo corporativo */
+    text-transform: uppercase;
+    /* Estilo corporativo */
     font-weight: 800;
 }
 
@@ -43,12 +55,15 @@ header {
     color: var(--color-blanco);
     padding: 1rem 5%;
     display: flex;
-    justify-content: space-between;  /* Logo izquierda / menú centro / iconos derecha */
+    justify-content: space-between;
+    /* Logo izquierda / menú centro / iconos derecha */
     align-items: center;
-    position: sticky;                /* Se queda arriba al hacer scroll */
+    position: sticky;
+    /* Se queda arriba al hacer scroll */
     top: 0;
     z-index: 1000;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
 }
 
 /* Contenedor del logo */
@@ -104,7 +119,8 @@ nav a:hover {
 nav a.active {
     color: var(--color-primario);
     font-weight: bold;
-    border-bottom: 3px solid var(--color-primario); /* Subrayado */
+    border-bottom: 3px solid var(--color-primario);
+    /* Subrayado */
 }
 
 /* Contenedor de íconos superiores */
@@ -142,7 +158,8 @@ nav a.active {
 }
 
 .btn-logout:hover {
-    background-color: #e0a800; /* Amarillo más oscuro */
+    background-color: #e0a800;
+    /* Amarillo más oscuro */
 }
 
 /* ============================================================
@@ -153,8 +170,10 @@ nav a.active {
 .container {
     width: 90%;
     max-width: 1100px;
-    margin: 50px auto;       /* Centrado */
-    text-align: center;      /* Contenido centrado */
+    margin: 50px auto;
+    /* Centrado */
+    text-align: center;
+    /* Contenido centrado */
 }
 
 /* Título principal */
@@ -198,14 +217,15 @@ nav a.active {
    TARJETAS DE SECCIONES
 ============================================================ */
 .section {
-    display: none;                /* Ocultas por defecto */
+    display: none;
+    /* Ocultas por defecto */
     background: var(--color-blanco);
     padding: 35px;
     border-radius: 18px;
     margin: 25px auto;
     width: 90%;
     max-width: 850px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
 /* Título dentro de cada sección */
@@ -254,7 +274,7 @@ nav a.active {
 .formulario select:focus {
     border-color: var(--color-primario);
     outline: none;
-    box-shadow: 0px 0px 10px rgba(255,193,7,0.4);
+    box-shadow: 0px 0px 10px rgba(255, 193, 7, 0.4);
 }
 
 /* Botón de formularios */
@@ -292,7 +312,7 @@ nav a.active {
 }
 
 /* Celdas */
-.tabla th, 
+.tabla th,
 .tabla td {
     padding: 12px;
     border: 1px solid #ddd;
@@ -306,6 +326,21 @@ nav a.active {
 /* Hover en filas */
 .tabla tr:hover {
     background-color: #ffe8a6;
+}
+
+.estado-noempezado {
+    color: red;
+    font-weight: bold;
+}
+
+.estado-proceso {
+    color: yellow;
+    font-weight: bold;
+}
+
+.estado-terminado {
+    color: green;
+    font-weight: bold;
 }
 
 /* ============================================================
