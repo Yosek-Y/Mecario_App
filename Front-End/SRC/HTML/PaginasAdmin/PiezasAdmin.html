@@ -5,44 +5,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mecario - Administrador - Piezas</title>
-    <!-- 
-        ICONOS (FONT AWESOME)
-        - Se importa la librería de iconos para usar el ícono de búsqueda
-          y las redes sociales en el header.
-    -->
+    <!-- ICONOS (FONT AWESOME) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- 
-        TIPOGRAFÍAS (GOOGLE FONTS)
-        - Se cargan dos familias de fuentes:
-            * Montserrat: Usada para los titulos
-            * Roboto: Usada en el contenido del sitio
-    -->
+    <!-- TIPOGRAFÍAS (GOOGLE FONTS) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap"
         rel="stylesheet">
-    <!-- Archivo CSS-->
+    <!-- ARCHIVO CSS -->
     <link rel="stylesheet" href="../../CSS/EstilosAdmin/EstilosPiezasAdmin.css">
+    <style>
+        /* --- ESTILOS  PARA MAS FACHA --- */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        section {
+            background: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 1rem;
+            color: #444;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 2rem;
+        }
+
+        form label {
+            font-weight: 500;
+            color: #555;
+        }
+
+        form input,
+        form button {
+            padding: 0.6rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 0.95rem;
+        }
+
+        form button {
+            grid-column: span 2;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Contenedores de listas */
+        #lista-piezas,
+        #lista-piezas-categoria {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #f9fafc;
+            border: 1px dashed #ccc;
+            border-radius: 5px;
+            min-height: 50px;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- HEADER: Contiene Logo, Navegación y Banner superior -->
+    <!-- HEADER -->
     <header>
-        <!-- 
-        Parte Izquierda: Logo y Nombre del proyecto
-        - Muestra la imagen del logo y el nombre del proyecto Mecario
-        -->
         <div class="logo-container">
             <img src="../../../ASSETS/IMAGENES/Logo_Blanco_Mecario.png" alt="Logo Mecario" class="logo-img">
             <span class="brand-name">MECARIO</span>
         </div>
-        <!-- 
-        Parte central: Barra de navegación / nav
-        - Contiene los enlaces del menú principal.
-        - Cada <a> apunta a secciones internas de la página mediante IDs.
-        - La sección "Nosotros" lleva a una página externa.
-        -->
         <nav>
             <ul>
                 <li><a href="../PaginasAdmin/CasosAdmin.html">Casos</a></li>
@@ -51,24 +111,88 @@
                 <li><a href="../PaginasAdmin/MecanicosAdmin.html">Mecánicos</a></li>
             </ul>
         </nav>
-
-        <!-- 
-        Parte Derecha: Íconos y Botón de Login
-        - Incluye el ícono de búsqueda con enlace directo a Google.com
-        - Contiene íconos de redes sociales
-        - Incluye el botón "Login" que abre el display de autenticación mediante JS
-        -->
         <div class="top-banner-icons">
-            <!-- Ícono de Búsqueda -->
             <a href="https://www.google.com" target="_blank" class="icon-link" title="Buscar en Google">
                 <i class="fas fa-search"></i></a>
-            <!-- Iconos de Redes Sociales -->
             <a href="#" class="icon-link"><i class="fab fa-facebook-f"></i></a>
             <a href="#" class="icon-link"><i class="fab fa-instagram"></i></a>
             <a href="#" class="icon-link"><i class="fab fa-linkedin-in"></i></a>
-            <!-- Botón de Login -->
             <button class="btn-logout" onclick="window.location.href='../HTML/Home.html'">Logout</button>
         </div>
     </header>
+
+    <!-- MAIN -->
+    <main class="piezas-admin">
+        <h1>Gestión de Piezas</h1>
+
+        <!-- 1. PARA AGREGAR PIEZA -->
+        <section id="agregar-pieza">
+            <h2>Agregar Pieza</h2>
+            <form id="form-agregar-pieza">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="categoria">Categoría:</label>
+                <input type="text" id="categoria" name="categoria" required>
+
+                <label for="precio">Precio:</label>
+                <input type="number" id="precio" name="precio" required>
+
+                <label for="stock">Stock inicial:</label>
+                <input type="number" id="stock" name="stock" required>
+
+                <button type="submit">Agregar</button>
+            </form>
+        </section>
+
+        <!-- 2. VER TODAS LAS PIEZAS -->
+        <section id="ver-piezas">
+            <h2>Ver todas las piezas</h2>
+            <div id="lista-piezas">
+                <!-- Aquí se renderiza la lista con JS usando el DTO -->
+            </div>
+        </section>
+
+        <!-- 3. AÑADIR STOCK -->
+        <section id="añadir-stock">
+            <h2>Añadir Stock</h2>
+            <form id="form-añadir-stock">
+                <label for="pieza-id-add">ID de Pieza:</label>
+                <input type="text" id="pieza-id-add" name="piezaId" required>
+
+                <label for="cantidad-add">Cantidad a añadir:</label>
+                <input type="number" id="cantidad-add" name="cantidad" required>
+
+                <button type="submit">Añadir</button>
+            </form>
+        </section>
+
+        <!-- 4. REDUCIR STOCK -->
+        <section id="reducir-stock">
+            <h2>Reducir Stock</h2>
+            <form id="form-reducir-stock">
+                <label for="pieza-id-reduce">ID de Pieza:</label>
+                <input type="text" id="pieza-id-reduce" name="piezaId" required>
+
+                <label for="cantidad-reduce">Cantidad a reducir:</label>
+                <input type="number" id="cantidad-reduce" name="cantidad" required>
+
+                <button type="submit">Reducir</button>
+            </form>
+        </section>
+
+        <!-- 5. VER PIEZAS SEGÚN CATEGORÍA -->
+        <section id="ver-piezas-categoria">
+            <h2>Ver Piezas por Categoría</h2>
+            <form id="form-ver-categoria">
+                <label for="categoria-buscar">Categoría:</label>
+                <input type="text" id="categoria-buscar" name="categoria" required>
+                <button type="submit">Buscar</button>
+            </form>
+            <div id="lista-piezas-categoria">
+                <!-- Aquí se renderiza la lista filtrada con JS -->
+            </div>
+        </section>
+    </main>
 </body>
 </html>
