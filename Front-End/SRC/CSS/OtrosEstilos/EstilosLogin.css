@@ -30,7 +30,7 @@ body {
     font-family: var(--fuente-cuerpo);
     color: var(--color-texto);
     /* Fondo con imagen */
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(26, 26, 26, 0.6) 100%), url('../../ASSETS/IMAGENES/FondoLogin.jpg') center/cover no-repeat;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(26, 26, 26, 0.6) 100%), url('../../../ASSETS/IMAGENES/FondoLogin.jpg') center/cover no-repeat;
     min-height: 100vh;
     display: flex;
     /* Para centrar el contenido vertical y horizontalmente */
