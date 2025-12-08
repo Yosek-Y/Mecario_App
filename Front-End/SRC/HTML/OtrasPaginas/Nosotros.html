@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mecario - Nosotros</title>
+    <!-- 
+        ICONOS (FONT AWESOME)
+        - Se importa la librería de iconos para usar el ícono de búsqueda
+          y las redes sociales en el header.
+    -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- 
+        TIPOGRAFÍAS (GOOGLE FONTS)
+        - Se cargan dos familias de fuentes:
+            * Montserrat: Usada para los titulos
+            * Roboto: Usada en el contenido del sitio
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <!-- Archivo CSS-->
+    <link rel="stylesheet" href="../../CSS/OtrosEstilos/EstilosNosotros.css">
+</head>
+
+<body>
+    <!-- HEADER: Contiene Logo, Navegación y Banner superior -->
+    <header>
+        <!-- 
+        Parte Izquierda: Logo y Nombre del proyecto
+        - Muestra la imagen del logo y el nombre del proyecto Mecario
+        -->
+        <div class="logo-container">
+            <img src="../../../ASSETS/IMAGENES/Logo_Blanco_Mecario.png" alt="Logo Mecario" class="logo-img">
+            <span class="brand-name">MECARIO</span>
+        </div>
+        <!-- 
+        Parte central: Barra de navegación / nav
+        - Contiene los enlaces del menú principal.
+        - Cada <a> apunta a secciones internas de la página mediante IDs.
+        - La sección "Nosotros" lleva a una página externa.
+        -->
+        <nav>
+            <ul>
+                <li><a href="../OtrasPaginas/Home.html">Inicio</a></li>
+                <li><a href="../OtrasPaginas/Home.html">Servicios</a></li>
+                <li><a href="../OtrasPaginas/Home.html">Noticias</a></li>
+                <li><a class="active" href="../OtrasPaginas/Nosotros.html">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <!-- 
+        Parte Derecha: Íconos y Botón de Login
+        - Incluye el ícono de búsqueda con enlace directo a Google.com
+        - Contiene íconos de redes sociales
+        - Incluye el botón "Login" que abre el display de autenticación mediante JS
+        -->
+        <div class="top-banner-icons">
+            <!-- Ícono de Búsqueda -->
+            <a href="https://www.google.com" target="_blank" class="icon-link" title="Buscar en Google">
+                <i class="fas fa-search"></i></a>
+            <!-- Iconos de Redes Sociales -->
+            <a href="https://www.facebook.com/profile.php?id=61584832346526" class="icon-link" target="_blank"><i
+                    class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/mecariopty/" class="icon-link" target="_blank"><i
+                    class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/mecario-automotriz-42844b399" class="icon-link" target="_blank"><i
+                    class="fab fa-linkedin-in"></i></a>
+            <!-- Botón de Login -->
+            <button class="btn-login" onclick="window.location.href='../OtrasPaginas/Login.html'">Login</button>
+        </div>
+    </header>
+    <h1>Conoce a Nuestro Equipo</h1>
+
+    <div class="team-container">
+        <!-- Integrante 1 -->
+        <div class="team-card">
+            <img src="../../../ASSETS/IMAGENES/Andrea_Torrento.jpeg" alt="Integrante 1">
+            <div class="team-info">
+                <h3>Andrea Torrento</h3>
+                <p>Cédula: 20-23-7979</p>
+                <p>Carrera: Licenciatura en Desarrollo y Gestión de Software</p>
+                <p>Experiencia: Me sentí motivada y satisfecha al ver cómo cada cambio visual mejoraba la experiencia del usuario; aunque hubo retos, el proceso fue creativo y muy gratificante.</p>
+                <p class="materia">Materia: Desarrollo de Software 5 (Solo estuvo con nosotros en Front-end)</p>
+            </div>
+        </div>
+
+        <!-- Integrante 2 -->
+        <div class="team-card">
+            <img src="../../../ASSETS/IMAGENES/Luisa_Lacia.jpeg" alt="Integrante 2">
+            <div class="team-info">
+                <h3>Luisa De Gracia</h3>
+                <p>Cédula: 8-1023-924</p>
+                <p>Carrera: Licenciatura en Desarrollo y Gestión de Software</p>
+                <p>Experiencia: Fue una experiencia muy estresante, pero muy grata para practicar y ser mas profesional en el mundo del desarrollo.</p>
+                <p class="materia">Materia: Desarrollo de Software 4 y 5</p>
+            </div>
+        </div>
+
+        <!-- Integrante 3 -->
+        <div class="team-card">
+            <img src="../../../ASSETS/IMAGENES/Joselyn_.jpeg" alt="Integrante 3">
+            <div class="team-info">
+                <h3>Joselyn Cención</h3>
+                <p>Cédula: 8-1024-804</p>
+                <p>Carrera: Licenciatura en Desarrollo y Gestión de Software</p>
+                <p>Experiencia: A lo largo del proyecto pude mejorar mis habilidades técnicas y mi capacidad para resolver problemas. El trabajo realizado me ayudó a organizar mejor el código, depurar errores y adaptar soluciones según las necesidades. Fue una experiencia que fortaleció mi crecimiento como desarrollador y me permitió aplicar lo aprendido de manera práctica.</p>
+                <p class="materia">Materia: Desarrollo de Software 4 y 5</p>
+            </div>
+        </div>
+
+        <!-- Integrante 4 -->
+        <div class="team-card">
+            <img src="../../../ASSETS/IMAGENES/Traly.jpeg" alt="Integrante 4">
+            <div class="team-info">
+                <h3>Traly Amaro</h3>
+                <p>Cédula: E-8-215994</p>
+                <p>Carrera: Licenciatura en Desarrollo y Gestión de Software</p>
+                <p>Experiencia: Testing, control de calidad y documentación técnica</p>
+                <p class="materia">Materia: Desarrollo de Software 4 (Solo estuvo con nosotros en Back-end)</p>
+            </div>
+        </div>
+
+        <!-- Integrante 5 -->
+        <div class="team-card">
+            <img src="../../../ASSETS/IMAGENES/Yosek.jpeg" alt="Integrante 5">
+            <div class="team-info">
+                <h3>Joseph Córdoba</h3>
+                <p>Cédula: 8-1025-2381</p>
+                <p>Carrera: Licenciatura en Desarrollo y Gestión de Software</p>
+                <p>Experiencia: Un proyecto muy estresante pero completamente satisfecho del resultado final.
+                    Fue mi primera vez siendo desarrollador completo y la verdad es una experiencia increible cuando
+                    todo sale bien.</p>
+                <p class="materia">Materia: Desarrollo de Software 4 y 5</p>
+            </div>
+        </div>
+    </div>
+    <footer id="contacto">
+        <div class="footer-content">
+            <div>
+                <h3>Sucursales <i class="fa-solid fa-location-dot"></i> </h3>
+                <a href="https://www.google.com.pa/maps/place/Bremen+Autoservice+%7C+Tumba+Muerto/@9.0250389,-79.5249767,17z/data=!3m1!4b1!4m5!3m4!1s0x8faca8310de37e5f:0x8be2ef2c4b17f68c!8m2!3d9.0250389!4d-79.522788?hl=es&shorturl=1"
+                    target="_blank">
+                    Sucursal Tumba Muerto</a>
+                <a href="https://www.google.com.pa/maps/dir/Bremen+Autoservicio,+Calle+F+Sur,+David/8.4236304,-82.4320052/@8.4237538,-82.4319606,20.03z/data=!4m9!4m8!1m5!1m1!1s0x8fa59d77fb92d9bb:0xc8b5459ac19adc4d!2m2!1d-82.4320132!2d8.4236938!1m0!3e0?hl=es&shorturl=1"
+                    target="_blank">
+                    Sucursal David</a>
+                <a href="https://www.google.com.pa/maps/dir/Bremen+Autoservice+%7C+Chitr%C3%A9,+Calle+Francisco+Corro,+Chitr%C3%A9//@7.9602049,-80.4648923,13z/data=!4m9!4m8!1m5!1m1!1s0x8fad94ea5554d719:0xbe378ed061f1bf03!2m2!1d-80.4298725!2d7.9602064!1m0!3e0?hl=es&shorturl=1"
+                    target="_blank">
+                    Sucursal Chitré</a>
+                <a href="https://www.google.com.pa/maps/dir/Bremen+Autoservice+%7C+Chitr%C3%A9,+Calle+Francisco+Corro,+Chitr%C3%A9//@7.9602049,-80.4648923,13z/data=!4m9!4m8!1m5!1m1!1s0x8fad94ea5554d719:0xbe378ed061f1bf03!2m2!1d-80.4298725!2d7.9602064!1m0!3e0?hl=es&shorturl=1"
+                    target="_blank">
+                    Sucursal Calle 50</a>
+                <a href="https://www.google.com.pa/maps/dir/Autoservice+Bremen+%7C+Santiago,+Interamericana,+Santiago//@8.1045773,-81.0051298,13z/data=!4m9!4m8!1m5!1m1!1s0x8fae7216a9e106ed:0xc6edef226e115bb8!2m2!1d-80.97011!2d8.1045788!1m0!3e0?hl=es&shorturl=1"
+                    target="_blank">
+                    Sucursal 24 de Diciembre</a>
+
+            </div>
+            <div>
+                <img src="../../../ASSETS/IMAGENES/Logo_Horizontal.png" alt="Logo Mecario" class="logo-img">
+                <h3>Síguenos <i class="fa-solid fa-users"></i> </h3>
+                <a href="https://www.facebook.com/profile.php?id=61584832346526" class="icon-link"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/mecariopty/" class="icon-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/mecario-automotriz-42844b399" class="icon-link"><i
+                        class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div>
+                <h3>Contacto <i class="fa-solid fa-phone"></i> </h3>
+                <p>info@mecario.com</p>
+                <p>+507 1234-5678</p>
+                <p>377-9827</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Mecario. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script src="../../JAVASCRIPT/OtrosScripts/Home.js"></script>
+</body>
+
+</html>
