@@ -1,192 +1,175 @@
-document.addEventListener("DOMContentLoaded", async () => {
+//  LISTAR CLIENTES
+document.getElementById("btnListarClientes").addEventListener("click", async () => {
+    const tablaBody = document.querySelector("#tablaClientes tbody");
+    tablaBody.innerHTML = "<tr><td colspan='5'>Cargando...</td></tr>";
 
-    const contenedor = document.getElementById("clientes-container");
-    const filtro = document.getElementById("filtroCliente");
+    try {
+        const res = await fetch("https://localhost:7292/Api/Clientes/ListarClientes");
+        const json = await res.json();
+        const data = json.data ?? [];
 
-    let listaClientes = [];
+        tablaBody.innerHTML = "";
 
-    // ===================
-    // 1. Llamar API
-    // ===================
-    async function cargarClientes() {
-        try {
-            const response = await fetch("https://localhost:7292/api/Clientes");
-
-            if (!response.ok) throw new Error("Error al obtener los clientes");
-
-            listaClientes = await response.json();
-            mostrarClientes(listaClientes);
-
-        } catch (error) {
-            contenedor.innerHTML = `<p>Error: ${error.message}</p>`;
-        }
-    }
-
-    // ===================
-    // 2. Mostrar Clientes
-    // ===================
-    function mostrarClientes(clientes) {
-        contenedor.innerHTML = "";
-
-        clientes.forEach(cliente => {
-            const tarjeta = document.createElement("div");
-            tarjeta.classList.add("cliente-card");
-
-            tarjeta.innerHTML = `
-                <h3>Cliente #${cliente.id}</h3>
-
-                <p><strong>Nombre:</strong> ${cliente.nombre} ${cliente.apellido}</p>
-                <p><strong>Teléfono:</strong> ${cliente.telefono}</p>
-                <p><strong>Correo:</strong> ${cliente.correo}</p>
-                <p><strong>Dirección:</strong> ${cliente.direccion}</p>
-
-                <div class="acciones-cliente">
-                    <button class="btn-editar" data-id="${cliente.id}">Editar</button>
-                    <button class="btn-eliminar" data-id="${cliente.id}">Eliminar</button>
-                </div>
+        data.forEach(cliente => {
+            const fila = document.createElement("tr");
+            fila.innerHTML = `
+                <td>${cliente.nombreCliente}</td>
+                <td>${cliente.telefonoCliente}</td>
+                <td>${cliente.correoCliente}</td>
+                <td>${cliente.direccionCliente}</td>
+                <td>
+                    <button class="btn-tabla" onclick="mostrarVehiculos(${cliente.idCliente})">Ver Vehículos</button>
+                    <button class="btn-tabla btn-add-veh" onclick="mostrarFormularioVehiculo(${cliente.idCliente})">
+                    Añadir Nuevo Vehículo</button>
+                </td>
             `;
+            tablaBody.appendChild(fila);
+        });
+    } catch (err) {
+        console.error(err);
+        tablaBody.innerHTML = "<tr><td colspan='5'>Error al cargar clientes</td></tr>";
+    }
+});
 
-            contenedor.appendChild(tarjeta);
+//  MOSTRAR VEHÍCULOS DE UN CLIENTE
+async function mostrarVehiculos(idCliente) {
+    const tablaBody = document.querySelector("#tablaVehiculos tbody");
+    tablaBody.innerHTML = "<tr><td colspan='6'>Cargando vehículos...</td></tr>";
+
+    try {
+        const res = await fetch(`https://localhost:7292/Api/Vehiculos/ListarPorCliente/${idCliente}`);
+
+        if (res.status === 404) {
+            tablaBody.innerHTML = "<tr><td colspan='6'>El cliente no tiene vehículos registrados.</td></tr>";
+            return;
+        }
+
+        const json = await res.json();
+        const data = json.data ?? [];
+
+        tablaBody.innerHTML = "";
+
+        data.forEach(v => {
+            const fila = document.createElement("tr");
+            fila.innerHTML = `
+                <td>${v.placa}</td>
+                <td>${v.marca}</td>
+                <td>${v.modelo}</td>
+                <td>${v.anio}</td>
+                <td>${v.color}</td>
+                <td>${v.numeroChasis}</td>
+            `;
+            tablaBody.appendChild(fila);
         });
 
-        activarBotones();
+    } catch (err) {
+        console.error(err);
+        tablaBody.innerHTML = "<tr><td colspan='6'>Error al cargar vehículos</td></tr>";
     }
+}
 
-    // ===================
-    // 3. Activar botones Editar / Eliminar
-    // ===================
-    function activarBotones() {
+//  VARIABLE GLOBAL PARA GUARDAR EL CLIENTE ACTUAL
+let clienteSeleccionado = 0;
 
-        // EDITAR
-        document.querySelectorAll(".btn-editar").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const id = btn.getAttribute("data-id");
-                editarCliente(id);
-            });
+//  EVENTO AGREGAR NUEVO CLIENTE
+document.getElementById("formAgregarCliente").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Capturar datos
+    const dto = {
+        nombreCliente: document.getElementById("cl_nombre").value.trim(),
+        telefonoCliente: document.getElementById("cl_telefono").value.trim(),
+        correoCliente: document.getElementById("cl_correo").value.trim(),
+        direccionCliente: document.getElementById("cl_direccion").value.trim()
+    };
+
+    const msg = document.getElementById("msgAgregarCliente");
+
+    try {
+        const res = await fetch("https://localhost:7292/Api/Clientes/NuevoCliente", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dto)
         });
 
-        // ELIMINAR
-        document.querySelectorAll(".btn-eliminar").forEach(btn => {
-            btn.addEventListener("click", () => {
-                const id = btn.getAttribute("data-id");
-                eliminarCliente(id);
-            });
+        const data = await res.json();
+
+        if (!res.ok) {
+            msg.innerText = data.error || "Error al guardar el cliente.";
+            return;
+        }
+
+        msg.innerText = data.mensaje;
+
+        // Guardar ID del cliente creado
+        clienteSeleccionado = data.data.idCliente;
+
+        // Mostrar formulario de vehículo
+        document.getElementById("formAgregarVehiculo").style.display = "grid";
+        document.getElementById("formAgregarVehiculo").reset();
+
+    } catch (error) {
+        console.error(error);
+        msg.innerText = "Error de conexión con el servidor.";
+    }
+});
+
+//  MOSTRAR FORMULARIO DE VEHÍCULO (
+function mostrarFormularioVehiculo(idCliente) {
+    clienteSeleccionado = idCliente;
+    document.getElementById("formAgregarVehiculo").style.display = "grid";
+    document.getElementById("msgAgregarVehiculo").innerText = "";
+    document.getElementById("formAgregarVehiculo").reset();
+}
+
+//  EVENTO GUARDAR VEHÍCULO
+document.getElementById("formAgregarVehiculo").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const placa = document.getElementById("veh_placa").value.trim();
+    const marca = document.getElementById("veh_marca").value.trim();
+    const modelo = document.getElementById("veh_modelo").value.trim();
+    const anio = parseInt(document.getElementById("veh_anio").value);
+    const color = document.getElementById("veh_color").value.trim();
+    const numeroChasis = document.getElementById("veh_chasis").value.trim();
+
+    const msg = document.getElementById("msgAgregarVehiculo");
+
+    if (!placa || !marca || !modelo || !anio || !color || !numeroChasis) {
+        msg.innerText = "Todos los campos son obligatorios.";
+        return;
+    }
+
+    const dto = {
+        placa,
+        marca,
+        modelo,
+        anio,
+        color,
+        numeroChasis,
+        idCliente: clienteSeleccionado
+    };
+
+    try {
+        const res = await fetch("https://localhost:7292/Api/Vehiculos/AgregarVehiculo", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(dto)
         });
-    }
 
-    // ===================
-    // 4. Editar Cliente
-    // ===================
-    async function editarCliente(id) {
+        const data = await res.json();
 
-        try {
-            const response = await fetch(`https://localhost:7292/api/Clientes/${id}`);
-
-            if (!response.ok) throw new Error("No se pudo obtener el cliente");
-
-            const cliente = await response.json();
-
-            // Llenar formulario
-            document.getElementById("idCliente").value = id;
-            document.getElementById("nombre").value = cliente.nombre;
-            document.getElementById("apellido").value = cliente.apellido;
-            document.getElementById("telefono").value = cliente.telefono;
-            document.getElementById("correo").value = cliente.correo;
-            document.getElementById("direccion").value = cliente.direccion;
-
-        } catch (error) {
-            alert("Error al editar: " + error.message);
+        if (!res.ok) {
+            msg.innerText = data.error || "Error al guardar el vehículo.";
+            return;
         }
+
+        msg.innerText = data.mensaje;
+        mostrarVehiculos(clienteSeleccionado);
+        e.target.reset();
+
+    } catch (error) {
+        console.error(error);
+        msg.innerText = "Error de conexión con el servidor.";
     }
-
-    // ===================
-    // 5. Guardar (Crear o Actualizar)
-    // ===================
-    document.getElementById("formCliente").addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const id = document.getElementById("idCliente").value;
-
-        const datos = {
-            nombre: document.getElementById("nombre").value,
-            apellido: document.getElementById("apellido").value,
-            telefono: document.getElementById("telefono").value,
-            correo: document.getElementById("correo").value,
-            direccion: document.getElementById("direccion").value
-        };
-
-        try {
-            let response;
-
-            // ACTUALIZAR
-            if (id) {
-                response = await fetch(`https://localhost:7292/api/Clientes/${id}`, {
-                    method: "PUT",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(datos)
-                });
-            }
-            // CREAR
-            else {
-                response = await fetch("https://localhost:7292/api/Clientes", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(datos)
-                });
-            }
-
-            if (!response.ok) throw new Error("Error al guardar");
-
-            limpiarFormulario();
-            cargarClientes();
-
-        } catch (error) {
-            alert("Error: " + error.message);
-        }
-    });
-
-    // ===================
-    // 6. Eliminar Cliente
-    // ===================
-    async function eliminarCliente(id) {
-        if (!confirm("¿Seguro que desea eliminar a este cliente?")) return;
-
-        try {
-            const response = await fetch(`https://localhost:7292/api/Clientes/${id}`, {
-                method: "DELETE"
-            });
-
-            if (!response.ok) throw new Error("No se pudo eliminar");
-
-            cargarClientes();
-
-        } catch (error) {
-            alert("Error: " + error.message);
-        }
-    }
-
-    // ===================
-    // 7. Filtro por nombre (ejemplo)
-    // ===================
-    filtro.addEventListener("input", () => {
-        const texto = filtro.value.toLowerCase();
-
-        const filtrados = listaClientes.filter(c =>
-            c.nombre.toLowerCase().includes(texto) ||
-            c.apellido.toLowerCase().includes(texto)
-        );
-
-        mostrarClientes(filtrados);
-    });
-
-    // ===================
-    // 8. Limpiar formulario
-    // ===================
-    function limpiarFormulario() {
-        document.getElementById("formCliente").reset();
-        document.getElementById("idCliente").value = "";
-    }
-
-    // Iniciar
-    cargarClientes();
 });
