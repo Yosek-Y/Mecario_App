@@ -59,7 +59,7 @@ function configurarRegistroMecanico() {
             nombreUsuario: document.getElementById("Nombre_Mec").value,
             telefonoUsuario: document.getElementById("Telefono_Mec").value,
             correoUsuario: document.getElementById("Email_Mec").value,
-            direccionUsuario: "Sin dirección agregada desde el front",
+            direccionUsuario: document.getElementById("Direccion_Mec").value,
             userName: document.getElementById("Usuario_Mec").value,
             userPassword: document.getElementById("Contraseña_Mec").value
         };

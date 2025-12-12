@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Función que calcula la altura real del header (incluye padding, border)
     function alturaHeader() {
         return header ? Math.ceil(header.getBoundingClientRect().height) : 0;
+        //Math.ceil para evitar problemas con subpíxeles en algunos navegadores
     }
 
     // Scroll suave hacia un elemento (compensando el header)

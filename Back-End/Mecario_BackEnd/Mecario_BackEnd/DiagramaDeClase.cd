@@ -1,0 +1,305 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Mecario_BackEnd.Controllers.CasosController">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAkAAAAAAgUQAAYAAAAAAREAAABAAAEAABAAAA=</HashCode>
+      <FileName>Controllers\CasosController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Controllers.ClientesController">
+    <Position X="3.25" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAEAAAAAAAQAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Controllers\ClientesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Controllers.DetallesPiezasController">
+    <Position X="7.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\DetallesPiezasController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Controllers.OrdenesServicioController">
+    <Position X="9.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\OrdenesServicioController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Controllers.PiezasController">
+    <Position X="3.25" Y="3" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAEAAAAQAAAABAAAAAAAAACAAAAAAAQAAAA=</HashCode>
+      <FileName>Controllers\PiezasController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Controllers.UsuariosController">
+    <Position X="8.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAARAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\UsuariosController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Controllers.VehiculosController">
+    <Position X="10.5" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAEAAAAAAEAAAAAA=</HashCode>
+      <FileName>Controllers\VehiculoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Controladores.DetallesCasoController">
+    <Position X="5.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AACEAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\DetallesCasoController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiciosMecanicosController">
+    <Position X="5.75" Y="2.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Controllers\ServiciosMecanicosController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Servicios.CasosServicio">
+    <Position X="0.5" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>CgACAAAgAAIABBAEAQAIAAAABAIEAAAAACAAAAAAAAA=</HashCode>
+      <FileName>Servicios\CasosServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Servicios.ClientesServicio">
+    <Position X="3" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAEAAAABAAAAAAAAACAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Servicios\ClienteServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Servicios.DetallesCasoServicio">
+    <Position X="7.25" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQBAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Servicios\DetallesCasoServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Servicios.DetallesPiezaServicio">
+    <Position X="4.75" Y="6.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAACAAAAAIAA=</HashCode>
+      <FileName>Servicios\DetallesPiezaServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Servicios.OrdenesServicioServicio">
+    <Position X="9.75" Y="6.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Servicios\OrdenesServicioServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Servicios.PiezasServicio">
+    <Position X="9.5" Y="8.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>JAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAIAAAQAIAA=</HashCode>
+      <FileName>Servicios\PiezasServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Servicios.UsuariosServicio">
+    <Position X="7.5" Y="8.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEBAABAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>Servicios\UsuariosServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Servicios.VehiculosServicio">
+    <Position X="3" Y="9" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAgEAAAAAA=</HashCode>
+      <FileName>Servicios\VehiculosServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiciosMecanicosServicio">
+    <Position X="5" Y="8.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Servicios\ServiciosMecanicosServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.Casos">
+    <Position X="0.5" Y="12.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Mecario_BackEnd.Modelos.Casos.EstadoCaso" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Modelos\Casos.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AABAAAEAAAAEAAAAABACAECABAAAAAAAgCACAAAAAAA=</HashCode>
+      <FileName>Modelos\Casos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.Clientes">
+    <Position X="2.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAABAAAAAAAAQEAAAQAQAAAAA=</HashCode>
+      <FileName>Modelos\Clientes.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DetallesCaso">
+    <Position X="4" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAEAAAAAAAAAAAAIBAgAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\DetallesCaso.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DetallesPiezas">
+    <Position X="5.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAQAAAAAAAAAEAAAAAAAAAAAABABgAABAAAAAAA=</HashCode>
+      <FileName>Modelos\DetallesPiezas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.OrdenesServicio">
+    <Position X="7.5" Y="12.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Mecario_BackEnd.Modelos.OrdenesServicio.TipoServicio" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Modelos\OrdenesServicio.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAABICAAAAAAEAAEAAAAACABAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Modelos\OrdenesServicio.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.Piezas">
+    <Position X="9.25" Y="12.25" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Mecario_BackEnd.Modelos.Piezas.CategoriaPieza" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Modelos\Piezas.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAASAAAACAIgBAAAAACAAAAA=</HashCode>
+      <FileName>Modelos\Piezas.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.ServiciosMecanicos">
+    <Position X="2.25" Y="14.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Mecario_BackEnd.Modelos.ServiciosMecanicos.tipoDeServicio" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Modelos\ServiciosMecanicos.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAQAAAAAAAAAAAAACAAAAAEAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Modelos\ServiciosMecanicos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.Usuarios">
+    <Position X="4" Y="14.75" Width="1.5" />
+    <NestedTypes>
+      <Enum Name="Mecario_BackEnd.Modelos.Usuarios.Tipousuario" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Modelos\Usuarios.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAEAAAAMAAAAAAAIAAAAAAAAAAAAAGAABA=</HashCode>
+      <FileName>Modelos\Usuarios.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.Vehiculos">
+    <Position X="11" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAACAAAAQAAAAAAAAAAAAAAAAAADEAABAAgAIAAA=</HashCode>
+      <FileName>Modelos\Vehiculos.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.AbrirCasoDTO">
+    <Position X="0.5" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\DTOs\AbrirCasoDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.AgregarClienteNuevoDTO">
+    <Position X="2.25" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAABAAAAAAAAAAAAAQAQAAAAA=</HashCode>
+      <FileName>Modelos\DTOs\AgregarClienteNuevoDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.AgregarMecanicoDTO">
+    <Position X="4" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAIAAAAAAAIAAAAAAAAAAAAAGAABA=</HashCode>
+      <FileName>Modelos\DTOs\AgregarMecanicoDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.AgregarPiezaNuevaDTO">
+    <Position X="5.75" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAQAAAACAIgAAAAAACAAAAA=</HashCode>
+      <FileName>Modelos\DTOs\AgregarPiezaNuevaDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.AgregarReducirStockDTO">
+    <Position X="9.25" Y="19.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\DTOs\AgregarReducirStockDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.AgregarVehiculoDTO">
+    <Position X="0.5" Y="20.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAQAAAAAAAAAAAAAAAAAADEAAAAAAAIAAA=</HashCode>
+      <FileName>Modelos\DTOs\AgregarVehiculoDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.AsignarCasoAdminDTO">
+    <Position X="9.25" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\DTOs\AsignarCasoAdminDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.BuscarClienteDTO">
+    <Position X="7.5" Y="18.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAABAAAAAAAAAEAAAQAQAAAAA=</HashCode>
+      <FileName>Modelos\DTOs\BuscarClienteDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.CasoDTO">
+    <Position X="2.5" Y="20.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAEAAQAABACAEAABAAAAAAAgCAAAAAAAAA=</HashCode>
+      <FileName>Modelos\DTOs\CasoDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.CasosDeMecanicoDTO">
+    <Position X="4.25" Y="20.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABACAEAAAAAAAAAAgCAAAAAAAAA=</HashCode>
+      <FileName>Modelos\DTOs\CasosDeMecanicoDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Mecario_BackEnd.Modelos.DTOs.CasosSegunStatusDTO">
+    <Position X="6.25" Y="20.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAQAABACAEAAAAAAAAAAgCAAAAAAAAA=</HashCode>
+      <FileName>Modelos\DTOs\CasosSegunStatusDTO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
