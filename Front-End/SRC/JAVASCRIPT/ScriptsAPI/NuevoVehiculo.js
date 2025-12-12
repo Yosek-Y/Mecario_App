@@ -62,9 +62,8 @@ document.getElementById("btnBuscarCliente").addEventListener("click", async () =
         });
 
     } catch (error) {
-        mensajes.textContent = "Error de conexión con el servidor.";
+        mensajes.textContent = "No se encontraron clientes.";
         mensajes.style.color = "red";
-        console.error(error);
     }
 });
 
@@ -95,6 +94,7 @@ document.getElementById("btnGuardarVehiculo").addEventListener("click", async ()
     const marca = document.getElementById("vehiculoMarca").value.trim();
     const modelo = document.getElementById("vehiculoModelo").value.trim();
     const anio = parseInt(document.getElementById("vehiculoAnno").value);
+    const color = document.getElementById("vehiculoColor").value.trim();
     const placa = document.getElementById("vehiculoMatricula").value.trim();
     const chasis = document.getElementById("vehiculoChasis").value.trim();
 
@@ -103,6 +103,7 @@ document.getElementById("btnGuardarVehiculo").addEventListener("click", async ()
     // ===============================
     if (!marca) return mostrarError("La marca es obligatoria.");
     if (!modelo) return mostrarError("El modelo es obligatorio.");
+    if (!color) return mostrarError("El color es obligatorio.");
     if (!placa) return mostrarError("La matrícula/placa es obligatoria.");
     if (isNaN(anio) || anio < 1900 || anio > new Date().getFullYear() + 1)
         return mostrarError("El año ingresado no es válido.");
@@ -117,7 +118,7 @@ document.getElementById("btnGuardarVehiculo").addEventListener("click", async ()
         marca: marca,
         modelo: modelo,
         anio: anio,
-        color: "",               // No hay campo color en el HTML, se envía vacío
+        color: color,
         numeroChasis: chasis,
         idCliente: idClienteActual
     };
